@@ -1,0 +1,6 @@
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = true
+	ignorecase = true
+	precomposeunicode = true
