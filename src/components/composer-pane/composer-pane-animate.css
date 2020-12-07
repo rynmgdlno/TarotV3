@@ -1,0 +1,27 @@
+.composer-pane-animate {
+  animation: composer-pane-animate 70ms ease-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes composer-pane-animate {
+  from {
+    height: 92vh;
+  }
+  to {
+    height: 70vh;
+  }
+}
+
+.composer-pane-animate-return {
+  animation: composer-pane-animate-return 70ms ease-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes composer-pane-animate-return {
+  from {
+    height: 70vh;
+  }
+  to {
+    height: 92vh;
+  }
+}

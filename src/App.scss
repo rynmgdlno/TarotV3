@@ -1,0 +1,87 @@
+/* * Base Styles * */
+
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+body {
+  max-width: 100%;
+  // overflow-y: hidden;
+  overflow-x: hidden;
+  position: relative;
+  // max-height: 30vh;
+}
+
+/* * Dark / Light Modes * */
+
+html {
+background-color: #FAFAFA;
+  h1, h2, p, span {
+  color: #616161;
+}
+  input[type=text] {
+    background-color: #FFFFFF;
+    border: 1px solid #616161;
+    color: #616161;
+  }
+    ::placeholder {
+      color: #b0b0b0;
+    }
+    ::-webkit-slider-thumb {
+      background-color: #616161;
+    }
+  .saved-palettes-container {
+    background-color: #FAFAFA;
+  }
+}
+
+html.dark {
+  background-color: #212121;
+  h1, h2, p, span {
+    color: #BDBDBD;
+  }
+  input[type=text] {
+    background-color: #000000;
+    border-color: #000000;
+  }
+    ::placeholder {
+      color: #414141;
+    }
+    ::-webkit-slider-thumb {
+      background-color: #616161;
+    }
+    .saved-palettes-container {
+      background-color: #212121;
+    }
+}
+
+/* * Text Formatting * */
+a {
+  text-decoration: none;
+}
+
+.bigFont {
+  font-family: 'Myriad Pro', sans-serif;
+}
+
+.medFont {
+  font-family: 'Myriad Pro', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+
+/* * Inputs * */
+
+
+
+
+
+/* * Layout * */
+
+

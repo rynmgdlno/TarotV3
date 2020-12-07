@@ -1,0 +1,34 @@
+.indicator-animate {
+  animation: indicator-animate 100ms ease-out;
+  animation-fill-mode: forwards;
+
+}
+
+@keyframes indicator-animate {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100;
+  }
+}
+
+.indicator-animate-return {
+  animation: indicator-animate-return 100ms ease-out;
+  animation-fill-mode: forwards;
+  /* display: none; */
+}
+
+@keyframes indicator-animate-return {
+  0% {
+    opacity: 100;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.indicator-initial {
+  visibility: hidden;
+}

@@ -1,0 +1,32 @@
+.tarot {
+    display: flex;
+    flex-direction: column;
+}
+
+.grid-container {
+    display: flex;
+    height: 92vh;
+}
+
+.pane-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.menu {
+    position: fixed;
+    left: 83vw;
+    transform: translate3d(17vw, 0, 0);
+
+    width: 16.67vw;
+    height: 92%;
+}
+
+.hamburger {
+    position: absolute;
+    top: 1.5vh;
+    right: 0;
+    margin-right: 1vw;
+}

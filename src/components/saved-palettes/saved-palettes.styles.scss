@@ -1,0 +1,22 @@
+.saved-palettes {
+  height: 100%;
+  border-top: 1px solid #616161;
+  overflow-y: scroll;
+}
+
+.saved-palettes-container {
+  position: fixed;
+  top: 8vh;
+  right: 100vw;
+  width: 83vw;
+  height: 92vh;
+}
+
+.palette-title {
+  padding: 10px;
+  margin: 0;
+}
+
+.palette-hr {
+  width: 95%;
+}

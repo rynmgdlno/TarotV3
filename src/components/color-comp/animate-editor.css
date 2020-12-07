@@ -1,0 +1,33 @@
+.editor-animate {
+  animation: editor-animate 70ms ease-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes editor-animate {
+  from {
+    bottom: -15.3vh;
+  }
+  to {
+    bottom: 0;
+  }
+}
+
+.editor-animate-return {
+  animation: editor-animate-return 70ms ease-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes editor-animate-return {
+  0% {
+    bottom: 0;
+  }
+
+  100% {
+    bottom: -15.3vh;
+  }
+}
+
+.animation-end {
+  visibility: hidden;
+}
+

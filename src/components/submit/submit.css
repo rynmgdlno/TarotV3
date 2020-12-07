@@ -1,0 +1,10 @@
+.submit {
+    background-color: #000000;
+    border-radius: 5px;
+    border: 0;
+    font-size: larger;
+    color: #5e5e5e;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 3.5vh;
+  }

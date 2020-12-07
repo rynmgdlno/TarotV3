@@ -1,0 +1,29 @@
+.search-bar-animate {
+  animation: search-bar-animate 70ms ease-in forwards;
+}
+
+@keyframes search-bar-animate {
+  from {
+    opacity: 0;
+    width: 2vw;
+  }
+  to {
+    opacity: 1;
+    width: 55vw;
+  }
+}
+
+.search-bar-animate-reverse {
+  animation: search-bar-animate-reverse 70ms ease-in forwards;
+}
+
+@keyframes search-bar-animate-reverse {
+  from {
+    opacity: 1;
+    width: 55vw;
+  }
+  to {
+    opacity: 0;
+    width: 2vw;
+  }
+}

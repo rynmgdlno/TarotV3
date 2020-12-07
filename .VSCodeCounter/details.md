@@ -1,0 +1,122 @@
+# Details
+
+Date : 2020-12-04 15:52:26
+
+Directory /Volumes/Workspace/Web Dev/Tarot/TarotV3
+
+Total : 107 files,  31905 codes, 124 comments, 338 blanks, all 32367 lines
+
+[summary](results.md)
+
+## Files
+| filename | language | code | comment | blank | total |
+| :--- | :--- | ---: | ---: | ---: | ---: |
+| [README.md](/README.md) | Markdown | 37 | 0 | 32 | 69 |
+| [package-lock.json](/package-lock.json) | JSON | 29,013 | 0 | 1 | 29,014 |
+| [package.json](/package.json) | JSON | 46 | 0 | 1 | 47 |
+| [public/index.html](/public/index.html) | HTML | 21 | 23 | 2 | 46 |
+| [public/manifest.json](/public/manifest.json) | JSON | 25 | 0 | 1 | 26 |
+| [src/App.js](/src/App.js) | JavaScript | 22 | 0 | 4 | 26 |
+| [src/App.scss](/src/App.scss) | SCSS | 63 | 7 | 18 | 88 |
+| [src/App.test.js](/src/App.test.js) | JavaScript | 8 | 0 | 2 | 10 |
+| [src/assets/icons/chanel.svg](/src/assets/icons/chanel.svg) | XML | 14 | 0 | 0 | 14 |
+| [src/assets/icons/chevron-double-up-o.svg](/src/assets/icons/chevron-double-up-o.svg) | XML | 22 | 0 | 0 | 22 |
+| [src/assets/icons/dark-mode.svg](/src/assets/icons/dark-mode.svg) | XML | 18 | 0 | 0 | 18 |
+| [src/assets/icons/file-add.svg](/src/assets/icons/file-add.svg) | XML | 15 | 0 | 0 | 15 |
+| [src/assets/icons/folder.svg](/src/assets/icons/folder.svg) | XML | 14 | 0 | 0 | 14 |
+| [src/assets/icons/menu.svg](/src/assets/icons/menu.svg) | XML | 20 | 0 | 0 | 20 |
+| [src/assets/icons/options.svg](/src/assets/icons/options.svg) | XML | 20 | 0 | 0 | 20 |
+| [src/assets/icons/readme.svg](/src/assets/icons/readme.svg) | XML | 14 | 0 | 0 | 14 |
+| [src/assets/icons/search.svg](/src/assets/icons/search.svg) | XML | 14 | 0 | 0 | 14 |
+| [src/assets/icons/trash-empty.svg](/src/assets/icons/trash-empty.svg) | XML | 14 | 0 | 0 | 14 |
+| [src/assets/icons/undo.svg](/src/assets/icons/undo.svg) | XML | 12 | 0 | 0 | 12 |
+| [src/assets/icons/user.svg](/src/assets/icons/user.svg) | XML | 18 | 0 | 0 | 18 |
+| [src/components/color-comp/animate-editor.css](/src/components/color-comp/animate-editor.css) | CSS | 27 | 0 | 7 | 34 |
+| [src/components/color-comp/color-comp.js](/src/components/color-comp/color-comp.js) | JavaScript | 49 | 5 | 10 | 64 |
+| [src/components/color-comp/color-comp.styles.scss](/src/components/color-comp/color-comp.styles.scss) | SCSS | 34 | 2 | 5 | 41 |
+| [src/components/color-comp/indicator-animate.css](/src/components/color-comp/indicator-animate.css) | CSS | 27 | 1 | 6 | 34 |
+| [src/components/color-result/color-result.js](/src/components/color-result/color-result.js) | JavaScript | 18 | 3 | 8 | 29 |
+| [src/components/color-result/color-result.styles.scss](/src/components/color-result/color-result.styles.scss) | SCSS | 9 | 0 | 2 | 11 |
+| [src/components/composer-pane/composer-pane-animate.css](/src/components/composer-pane/composer-pane-animate.css) | CSS | 24 | 0 | 3 | 27 |
+| [src/components/composer-pane/composer-pane.js](/src/components/composer-pane/composer-pane.js) | JavaScript | 47 | 1 | 7 | 55 |
+| [src/components/composer-pane/composer-pane.styles.scss](/src/components/composer-pane/composer-pane.styles.scss) | SCSS | 16 | 2 | 5 | 23 |
+| [src/components/custom-button/custom-button.js](/src/components/custom-button/custom-button.js) | JavaScript | 8 | 0 | 3 | 11 |
+| [src/components/custom-button/custom-button.styles.scss](/src/components/custom-button/custom-button.styles.scss) | SCSS | 4 | 0 | 0 | 4 |
+| [src/components/editor/editor.js](/src/components/editor/editor.js) | JavaScript | 27 | 0 | 4 | 31 |
+| [src/components/editor/editor.styles.scss](/src/components/editor/editor.styles.scss) | SCSS | 69 | 9 | 11 | 89 |
+| [src/components/form-input/form-input.js](/src/components/form-input/form-input.js) | JavaScript | 44 | 0 | 5 | 49 |
+| [src/components/form-input/form-input.scss](/src/components/form-input/form-input.scss) | SCSS | 9 | 1 | 0 | 10 |
+| [src/components/helper/helper.js](/src/components/helper/helper.js) | JavaScript | 10 | 0 | 4 | 14 |
+| [src/components/helper/helper.styles.scss](/src/components/helper/helper.styles.scss) | SCSS | 0 | 0 | 1 | 1 |
+| [src/components/icons/icon-components/editor.icon.js](/src/components/icons/icon-components/editor.icon.js) | JavaScript | 22 | 0 | 2 | 24 |
+| [src/components/icons/icon-components/help.icon.js](/src/components/icons/icon-components/help.icon.js) | JavaScript | 17 | 0 | 2 | 19 |
+| [src/components/icons/icon-components/open.icon.js](/src/components/icons/icon-components/open.icon.js) | JavaScript | 18 | 0 | 2 | 20 |
+| [src/components/icons/icon-components/save.icon.js](/src/components/icons/icon-components/save.icon.js) | JavaScript | 18 | 0 | 2 | 20 |
+| [src/components/icons/icon-components/search.icon.js](/src/components/icons/icon-components/search.icon.js) | JavaScript | 21 | 0 | 2 | 23 |
+| [src/components/icons/icon-components/them.icon.js](/src/components/icons/icon-components/them.icon.js) | JavaScript | 24 | 0 | 2 | 26 |
+| [src/components/icons/icon-components/user.icon.js](/src/components/icons/icon-components/user.icon.js) | JavaScript | 18 | 0 | 2 | 20 |
+| [src/components/icons/icon.styles.scss](/src/components/icons/icon.styles.scss) | SCSS | 6 | 0 | 1 | 7 |
+| [src/components/icons/svg/account_circle-black-48dp.svg](/src/components/icons/svg/account_circle-black-48dp.svg) | XML | 1 | 0 | 0 | 1 |
+| [src/components/icons/svg/bookmark-black-48dp.svg](/src/components/icons/svg/bookmark-black-48dp.svg) | XML | 1 | 0 | 0 | 1 |
+| [src/components/icons/svg/dark-mode.svg](/src/components/icons/svg/dark-mode.svg) | XML | 18 | 0 | 0 | 18 |
+| [src/components/icons/svg/file-add.svg](/src/components/icons/svg/file-add.svg) | XML | 15 | 0 | 0 | 15 |
+| [src/components/icons/svg/folder-open-solid.svg](/src/components/icons/svg/folder-open-solid.svg) | XML | 1 | 0 | 0 | 1 |
+| [src/components/icons/svg/folder.svg](/src/components/icons/svg/folder.svg) | XML | 14 | 0 | 0 | 14 |
+| [src/components/icons/svg/folder_open-black-48dp.svg](/src/components/icons/svg/folder_open-black-48dp.svg) | XML | 1 | 0 | 0 | 1 |
+| [src/components/icons/svg/menu.svg](/src/components/icons/svg/menu.svg) | XML | 20 | 0 | 0 | 20 |
+| [src/components/icons/svg/options.svg](/src/components/icons/svg/options.svg) | XML | 20 | 0 | 0 | 20 |
+| [src/components/icons/svg/question-circle-regular.svg](/src/components/icons/svg/question-circle-regular.svg) | XML | 4 | 0 | 0 | 4 |
+| [src/components/icons/svg/readme.svg](/src/components/icons/svg/readme.svg) | XML | 14 | 0 | 0 | 14 |
+| [src/components/icons/svg/save-regular.svg](/src/components/icons/svg/save-regular.svg) | XML | 1 | 0 | 0 | 1 |
+| [src/components/icons/svg/search.svg](/src/components/icons/svg/search.svg) | XML | 14 | 0 | 0 | 14 |
+| [src/components/icons/svg/trash-empty.svg](/src/components/icons/svg/trash-empty.svg) | XML | 14 | 0 | 0 | 14 |
+| [src/components/icons/svg/undo.svg](/src/components/icons/svg/undo.svg) | XML | 12 | 0 | 0 | 12 |
+| [src/components/icons/svg/user-solid.svg](/src/components/icons/svg/user-solid.svg) | XML | 1 | 0 | 0 | 1 |
+| [src/components/icons/svg/user.svg](/src/components/icons/svg/user.svg) | XML | 18 | 0 | 0 | 18 |
+| [src/components/menu/menu.js](/src/components/menu/menu.js) | JavaScript | 37 | 1 | 4 | 42 |
+| [src/components/menu/menu.styles.scss](/src/components/menu/menu.styles.scss) | SCSS | 10 | 1 | 1 | 12 |
+| [src/components/palette-color/palette-color.js](/src/components/palette-color/palette-color.js) | JavaScript | 9 | 3 | 2 | 14 |
+| [src/components/palette-color/palette-color.styles.scss](/src/components/palette-color/palette-color.styles.scss) | SCSS | 4 | 0 | 0 | 4 |
+| [src/components/palette/palette-animate.css](/src/components/palette/palette-animate.css) | CSS | 44 | 0 | 9 | 53 |
+| [src/components/palette/palette.js](/src/components/palette/palette.js) | JavaScript | 41 | 1 | 4 | 46 |
+| [src/components/palette/palette.styles.scss](/src/components/palette/palette.styles.scss) | SCSS | 19 | 2 | 5 | 26 |
+| [src/components/result-pane/result-pane.js](/src/components/result-pane/result-pane.js) | JavaScript | 15 | 0 | 4 | 19 |
+| [src/components/result-pane/result-pane.styles.scss](/src/components/result-pane/result-pane.styles.scss) | SCSS | 11 | 0 | 3 | 14 |
+| [src/components/saved-palettes/saved-palettes.js](/src/components/saved-palettes/saved-palettes.js) | JavaScript | 35 | 2 | 9 | 46 |
+| [src/components/saved-palettes/saved-palettes.styles.scss](/src/components/saved-palettes/saved-palettes.styles.scss) | SCSS | 19 | 0 | 3 | 22 |
+| [src/components/search-bar/search-bar.js](/src/components/search-bar/search-bar.js) | JavaScript | 9 | 0 | 5 | 14 |
+| [src/components/search-bar/search-bar.styles.scss](/src/components/search-bar/search-bar.styles.scss) | SCSS | 0 | 0 | 1 | 1 |
+| [src/components/submit/submit.css](/src/components/submit/submit.css) | CSS | 10 | 0 | 0 | 10 |
+| [src/components/submit/submit.js](/src/components/submit/submit.js) | JavaScript | 8 | 0 | 2 | 10 |
+| [src/components/top-bar/search-bar-animate.css](/src/components/top-bar/search-bar-animate.css) | CSS | 26 | 0 | 3 | 29 |
+| [src/components/top-bar/top-bar.js](/src/components/top-bar/top-bar.js) | JavaScript | 26 | 0 | 9 | 35 |
+| [src/components/top-bar/top-bar.scss](/src/components/top-bar/top-bar.scss) | SCSS | 11 | 1 | 3 | 15 |
+| [src/components/top-bar/top-barBackup.js](/src/components/top-bar/top-barBackup.js) | JavaScript | 19 | 0 | 3 | 22 |
+| [src/data.js](/src/data.js) | JavaScript | 38 | 0 | 1 | 39 |
+| [src/fake-result.js](/src/fake-result.js) | JavaScript | 38 | 0 | 1 | 39 |
+| [src/fake-saved-palettes.js](/src/fake-saved-palettes.js) | JavaScript | 604 | 0 | 1 | 605 |
+| [src/index.css](/src/index.css) | CSS | 12 | 0 | 2 | 14 |
+| [src/index.js](/src/index.js) | JavaScript | 13 | 3 | 3 | 19 |
+| [src/logo.svg](/src/logo.svg) | XML | 7 | 0 | 1 | 8 |
+| [src/pages/account/account.js](/src/pages/account/account.js) | JavaScript | 72 | 0 | 7 | 79 |
+| [src/pages/register/register.js](/src/pages/register/register.js) | JavaScript | 82 | 0 | 7 | 89 |
+| [src/pages/sign-in/sign-in.js](/src/pages/sign-in/sign-in.js) | JavaScript | 66 | 0 | 7 | 73 |
+| [src/pages/splash/splash.css](/src/pages/splash/splash.css) | CSS | 9 | 0 | 1 | 10 |
+| [src/pages/splash/splash.js](/src/pages/splash/splash.js) | JavaScript | 14 | 0 | 3 | 17 |
+| [src/pages/tarot/menu-animate.css](/src/pages/tarot/menu-animate.css) | CSS | 48 | 0 | 7 | 55 |
+| [src/pages/tarot/saved-palettes-animate.css](/src/pages/tarot/saved-palettes-animate.css) | CSS | 28 | 0 | 4 | 32 |
+| [src/pages/tarot/tarot.js](/src/pages/tarot/tarot.js) | JavaScript | 121 | 20 | 18 | 159 |
+| [src/pages/tarot/tarot.scss](/src/pages/tarot/tarot.scss) | SCSS | 27 | 0 | 6 | 33 |
+| [src/pages/tarot/tarotBackup.js](/src/pages/tarot/tarotBackup.js) | JavaScript | 77 | 1 | 14 | 92 |
+| [src/redux/composer/composer.actions.js](/src/redux/composer/composer.actions.js) | JavaScript | 5 | 0 | 1 | 6 |
+| [src/redux/composer/composer.reducer.js](/src/redux/composer/composer.reducer.js) | JavaScript | 0 | 0 | 1 | 1 |
+| [src/redux/composer/composer.selectors.js](/src/redux/composer/composer.selectors.js) | JavaScript | 0 | 0 | 1 | 1 |
+| [src/redux/composer/composer.types.js](/src/redux/composer/composer.types.js) | JavaScript | 3 | 0 | 1 | 4 |
+| [src/redux/root-reducer.js](/src/redux/root-reducer.js) | JavaScript | 13 | 0 | 4 | 17 |
+| [src/redux/store.js](/src/redux/store.js) | JavaScript | 11 | 0 | 4 | 15 |
+| [src/serviceWorker.js](/src/serviceWorker.js) | JavaScript | 98 | 31 | 13 | 142 |
+| [src/setupTests.js](/src/setupTests.js) | JavaScript | 1 | 4 | 1 | 6 |
+| [src/styles/mixins.scss](/src/styles/mixins.scss) | SCSS | 0 | 0 | 1 | 1 |
+| [src/styles/variables.scss](/src/styles/variables.scss) | SCSS | 0 | 0 | 1 | 1 |
+
+[summary](results.md)

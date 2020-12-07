@@ -1,0 +1,10 @@
+.splash {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+}
+
+.splashTitle{
+    margin-top: 20vh;
+}

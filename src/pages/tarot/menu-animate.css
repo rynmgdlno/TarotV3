@@ -1,0 +1,55 @@
+.menu-animate {
+  animation: menu-animate 70ms ease-in;
+  animation-fill-mode: forwards;
+}
+
+@keyframes menu-animate {
+  from {
+    transform: translate3d(17vw, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.container-animate {
+  animation: container-animate 70ms ease-in;
+  animation-fill-mode: forwards;
+}
+
+@keyframes container-animate {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 83%;
+  }
+}
+
+.menu-animate-return {
+  animation: menu-animate-return 70ms ease-in;
+  animation-fill-mode: forwards;
+}
+
+@keyframes menu-animate-return {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(17vw, 0, 0);
+  }
+}
+
+.container-animate-return {
+  animation: container-animate-return 70ms ease-in;
+  animation-fill-mode: forwards;
+}
+
+@keyframes container-animate-return {
+  from {
+    width: 83%;
+  }
+  to {
+    width: 100%;
+  }
+}

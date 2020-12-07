@@ -1,0 +1,89 @@
+.editor {
+  width: 100%;
+  height: 15.3vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.editor-pane {
+  width: 90%;
+  height: 90%;
+  margin-top: auto;
+  margin-bottom: auto;
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 3%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+// .editor-buttons {
+//   width: 90%;
+//   display: flex;
+//   justify-content: space-between;
+
+// }
+
+.done {
+  width: 90%;
+  margin-top: 2vh;
+  margin-bottom: 1vh;
+}
+
+.editor-slider {
+  appearance: none;
+  background-color: #808080;
+  width: 100%;
+  height: 5px;
+  border-radius: 5px;
+  margin-left: 1vh;
+}
+
+.editor-slider::-webkit-slider-thumb {
+  appearance: none;
+  // background: white;
+  width: 16px;
+  height: 16px;
+  border-radius: 100%;
+}
+
+.slider {
+  width: 90%;
+  height: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slider-input {
+  width: 3.5vh;
+  height: 2vh;
+  background-color: rgba(0,0,0,0);
+  // border: none;
+  border-radius: 2vh;
+  margin-left: 1vh;
+  color: white;
+  font-weight: 300;
+  padding: 3px;
+}
+
+.slider-label {
+  font-weight: 600;
+  // color: white;
+}
+
+.editor-container-initial {
+  display: none;
+  // opacity: 0;
+}
+
+.editor-container {
+  background-color: rgba(0, 0, 0, 0);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 22vh;
+}

@@ -1,0 +1,52 @@
+.palette-container-open {
+  animation: palette-container-open 70ms ease-out forwards;
+}
+
+@keyframes palette-container-open {
+  from {
+    height: 5vh;
+  }
+  to {
+    height: 8vh;
+  }
+}
+
+.palette-container-closed {
+  animation: palette-container-closed 70ms ease-out forwards;
+}
+
+@keyframes palette-container-closed {
+  from {
+    height: 8vh;
+  }
+  to {
+    height: 5vh;
+  }
+}
+
+.palette-menu-animate {
+  animation: palette-menu-animate 70ms ease-out forwards;
+}
+
+@keyframes palette-menu-animate {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.palette-menu-animate-return {
+  animation: palette-menu-animate-return 70ms ease-out forwards;
+}
+
+@keyframes palette-menu-animate-return {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+

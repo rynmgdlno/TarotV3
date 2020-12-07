@@ -1,0 +1,26 @@
+.palette-container {
+  // border: 1px solid red;
+  // background-color: white;
+}
+
+.palette {
+  display: flex;
+  justify-content: space-between;
+}
+
+.palette-title {
+}
+
+.palette-colors-container {
+  display: flex;
+}
+
+.palette-menu {
+  position: relative;
+  text-align: right;
+}
+
+.palette-button {
+  margin-left: 5vw;
+  margin-top: .7vh;
+}

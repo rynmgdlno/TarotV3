@@ -1,0 +1,41 @@
+.color-comp {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.editor-button {
+    margin-right: 6.5vw;
+    padding: 0;
+    background-color: rgba(0,0,0,0);
+    height: 24px;
+}
+
+
+.editor-indicator-container {
+    display: flex;
+    // flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 30;
+}
+
+.hex-indicator {
+    // transform: rotate(-90deg);
+    color: rgba(255,255,255,.5);
+    font-size: 16px;
+    font-weight: 600;
+    margin-right: 7vw;
+    opacity: 30;
+}
+
+.editorIndicator {
+    background-color: rgba(255,255,255,.5);
+    border-radius: 100%;
+    width: 1em;
+    height: 1em;
+    margin-right: 7vw;
+    opacity: 30;
+}
