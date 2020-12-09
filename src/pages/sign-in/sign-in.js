@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import Submit from '../../components/submit/submit';
+import CustomButton from '../../components/custom-button/custom-button'
 import FormInput from '../../components/form-input/form-input';
+
+import { signInWithGoogle } from '../../firebase/firebase.utils'
 
 class SignIn extends Component {
   state = {
@@ -65,7 +67,8 @@ class SignIn extends Component {
           onChange={this.handleChange}
         />
         <p></p>
-        <Submit />
+        <CustomButton onClick={signInWithGoogle} >Sign In With Google</CustomButton>
+        {/* <CustomButton onClick={signInWithFacebook} >Sign In With Facebook</CustomButton> */}
       </div>
     )
   }

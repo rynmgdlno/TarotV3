@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import { HamburgerSqueeze } from 'react-animated-burgers';
+import { HamburgerSqueeze } from 'react-animated-burgers'
+import { useSwipeable } from 'react-swipeable'
+import { auth, firestore, createUserProfileDocument, createPaletteDocument } from '../../firebase/firebase.utils'
 
 import TopBar from '../../components/top-bar/top-bar.js'
 import ComposerPane from '../../components/composer-pane/composer-pane.js'
@@ -17,23 +19,52 @@ class Tarot extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      currentUser: null,
       query: '',
       colorEditor: data,
       colorResult: fakeResult,
+      savedPalettes: [],
       isActive: false,
       menuInitialClass: 'menu-animate-off',
       containerInitialClass: 'container-animate-off',
       isDark: true,
-      showPalettes: false
+      showPalettes: false,
+      userMenu: false
     }
-    this.toggleMenu = this.toggleMenu.bind(this);
-    this.toggleSavedPalettes = this.toggleSavedPalettes.bind(this);
-    // this.loadSavedPalette = this.loadSavedPalette.bind(this);
-    this.toggleDark = this.toggleDark.bind(this);
-
   }
 
-  toggleMenu() {
+  unsubscribeFromAuth = null
+
+  componentDidMount() {
+    let newSavedPalettes = []
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+      if (userAuth) {
+        const userRef = await createUserProfileDocument(userAuth);
+        userRef.onSnapshot(snapShot => {
+          this.setState({
+            currentUser: {
+              id: snapShot.id,
+              ...snapShot.data()
+            }
+          })
+        })
+        firestore.collection(`users/${userAuth.uid}/palettes`).get().then(function(querySnapshot) {
+          querySnapshot.forEach(function(doc) {
+            newSavedPalettes.push(doc.data())
+            // console.log(doc.data())
+          })
+        })
+      }
+      this.setState({ currentUser: userAuth})
+      this.setState({ savedPalettes: newSavedPalettes})
+    })
+  }
+
+  componentWillUnmount() {
+    this.unsubscribeFromAuth();
+  }
+
+  toggleMenu = () => {
     this.setState({ 
       isActive: !this.state.isActive, 
       menuInitialClass: 'menu-animate-return', 
@@ -41,11 +72,22 @@ class Tarot extends Component {
     if (this.state.showPalettes) {
       this.setState({ showPalettes: false})
     }
+    if (this.state.userMenu) {
+      this.setState({ userMenu: false})
+    }
   }
 
-  toggleSavedPalettes () {
+  toggleUserMenu = () => {
+    const userMenu = this.state.userMenu
+    this.setState({ userMenu: !userMenu })
+  }
+
+  toggleSavedPalettes = () => {
     const showPalettes = this.state.showPalettes
     this.setState({ showPalettes: !showPalettes })
+    if (this.state.userMenu) {
+      this.toggleUserMenu()
+    }
   }
 
   loadSavedPalette = (palette) => {
@@ -54,7 +96,12 @@ class Tarot extends Component {
     this.toggleSavedPalettes()
   }
 
-  toggleDark() {
+  savePalette = () => {
+    const paletteName = prompt('Palette Name: ')
+    createPaletteDocument(this.state.currentUser, this.state.colorEditor, paletteName)
+  }
+
+  toggleDark = () => {
     const isDark = this.state.isDark
     const DARK_CLASS = 'dark'
     this.setState({ isDark: !isDark })
@@ -65,12 +112,6 @@ class Tarot extends Component {
     }
   }
 
-  // handleChange = event => {
-  //   const { query } = this.state;
-  //   query[event.target.name] = event.target.value;
-  //   this.setState({ query });
-  // };
-
   sliderChange = (e) => {
     const newColors = this.state.colorEditor
     const id = e.target.id
@@ -78,15 +119,15 @@ class Tarot extends Component {
     const value = e.target.value
     newColors[id][color] = value
 
-    let newHexR = Number.parseInt(newColors[id]['red']).toString(16);
+    let newHexR = Number.parseInt(newColors[id]['red']).toString(16)
     if (newHexR.length === 1) {
       newHexR = ('0' + newHexR)
     }
-    let newHexG = Number.parseInt(newColors[id]['green']).toString(16);
+    let newHexG = Number.parseInt(newColors[id]['green']).toString(16)
     if (newHexR.length === 1) {
       newHexR = ('0' + newHexR)
     }
-    let newHexB = Number.parseInt(newColors[id]['blue']).toString(16);
+    let newHexB = Number.parseInt(newColors[id]['blue']).toString(16)
     if (newHexR.length === 1) {
       newHexR = ('0' + newHexR)
     }
@@ -95,32 +136,18 @@ class Tarot extends Component {
     this.setState({ colorEditor: newColors})
   }
 
-  // onSubmit = () => {
-  //   const {
-  //     query: { query }
-  //   } = this.state;
-  //   let err = {};
-
-  //   if (!query) {
-  //     err.username = "Enter a search term";
-  //   }
-
-  //   this.setState({ errors: err }, () => {
-  //     if (Object.getOwnPropertyNames(this.state.errors).length === 0) {
-  //       this.setState({ submitted: true });
-  //     }
-  //   });
-  // };
-
   render() {
-    const menuAnimate = this.state.isActive;
-    const menuAnimateInitial = this.state.menuInitialClass;
-    const containerAnimateInitial = this.state.containerInitialClass;
-    const showPalettes = this.state.showPalettes;
-    const sliderChange = this.sliderChange;
+    const menuAnimate = this.state.isActive
+    const menuAnimateInitial = this.state.menuInitialClass
+    const containerAnimateInitial = this.state.containerInitialClass
+    const showPalettes = this.state.showPalettes
+    const sliderChange = this.sliderChange
+    const userMenu = this.state.userMenu
+    const currentUser = this.state.currentUser
+    const savePalette = this.savePalette
 
     return (
-      <div className='tarot'>
+      <div onSwipe={this.onSwipe} className='tarot'>
         <div>
           <TopBar/>
           <HamburgerSqueeze 
@@ -138,7 +165,14 @@ class Tarot extends Component {
             </div>
           </div>
           <div className={menuAnimate ? 'menu menu-animate' : `menu ${menuAnimateInitial}`}>
-            <Menu toggleDark={this.toggleDark} toggleSavedPalettes={this.toggleSavedPalettes}/>
+            <Menu 
+            toggleDark={this.toggleDark} 
+            toggleSavedPalettes={this.toggleSavedPalettes} 
+            userMenu={userMenu} 
+            toggleUserMenu={this.toggleUserMenu} 
+            currentUser={currentUser}
+            savePalette={savePalette}
+            />
           </div>
         </div>
         <div className={
@@ -149,6 +183,7 @@ class Tarot extends Component {
           loadSavedPalette={this.loadSavedPalette}
           toggleMenu={this.toggleMenu}
           toggleSavedPalettes={this.toggleSavedPalettes}
+          savedPalettes={this.state.savedPalettes}
           />
         </div>
       </div>

@@ -4,13 +4,13 @@ import Palette from '../palette/palette'
 
 import './saved-palettes.styles.scss'
 
-import palettes from '../../fake-saved-palettes'
+import fakeSavedPalettes from '../../fake-saved-palettes'
 
 // const openPaletteMenuArray = []
 
-const SavedPalettes = ({loadSavedPalette}) => {
+const SavedPalettes = ({loadSavedPalette, savedPalettes}) => {
 
-  const [savedPalettes, setSavedPalettes] = useState(palettes)
+  // const [savedPalettes, setSavedPalettes] = useState(palettes)
   // const [pMenuOpen, setPMenuOpen] = useState([])
   const [isActive, setIsActive] = useState(false)
   const [activeMenu, setActiveMenu] = useState('')
@@ -19,9 +19,8 @@ const SavedPalettes = ({loadSavedPalette}) => {
     const paletteToOpen = savedPalettes.find((palette) => palette.name === name)
     paletteToOpen.name === activeMenu ? setActiveMenu(null) : setActiveMenu(paletteToOpen.name)
     isActive && activeMenu === name ? setIsActive(false) : setIsActive(true)
-    console.log(savedPalettes[7])
   }
-
+  console.log(savedPalettes)
   return (
     <div className='saved-palettes'>
       <div className='section-header'>

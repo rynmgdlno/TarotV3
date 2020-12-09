@@ -1,0 +1,22 @@
+.splash {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+}
+
+.splash-button {
+    border: 1px solid #616161;
+    border-radius: .7em;
+    margin-bottom: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+
+    &:hover {
+        border: 1px solid blue;
+        .p{
+            color: black;
+        }
+        color: black;
+    }
+}

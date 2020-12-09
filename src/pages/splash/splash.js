@@ -1,15 +1,16 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-import './splash.css';
+import CustomButton from '../../components/custom-button/custom-button'
+
+import './splash.scss';
 
 const Splash = () => {
     return (
         <div className="splash">
-            <h2 className="medFont">Welcome to <span className="bigFont">Tarot.</span> The keyword based color pallette generator.</h2>
-            <Link to='/signin'><h2 className="bigFont">Sign in</h2></Link>
-            <h2 className="medFont">Or tap below to get started!</h2>
-            <Link to='/tarot'><h1 className="bigFont splashTitle">TAROT</h1></Link>
+            <h1>Welcome to Tarot, the keyword based color pallette generator.</h1>
+            <Link to='/tarot'><CustomButton className='splash-button'><p>Start Tarot</p></CustomButton></Link>
+            <Link to='/help'><CustomButton className='splash-button'><p>Take a quick tour</p></CustomButton></Link>
         </div>
     )
 }

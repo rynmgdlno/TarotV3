@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import SavedPalettes from '../saved-palettes/saved-palettes'
+import UserMenu from '../user-menu/user-menu'
 import CustomButton from '../custom-button/custom-button'
 import UserIcon from '../icons/icon-components/user.icon'
 import OpenIcon from '../icons/icon-components/open.icon'
@@ -12,29 +12,31 @@ import HelpIcon from '../icons/icon-components/help.icon'
 import './menu.styles.scss'
 import '../icons/icon.styles.scss'
 
-const Menu = ({ toggleDark, toggleSavedPalettes }) => {
+const Menu = ({ toggleDark, toggleSavedPalettes, userMenu, toggleUserMenu, currentUser, savePalette }) => {
   return (
     <div className='menu-container'>
       <div className='menu-button'>
-        <Link to='/account'><CustomButton><UserIcon/></CustomButton></Link>
+        <CustomButton onClick={toggleUserMenu}><UserIcon /></CustomButton>
       </div>
       <div className='menu-button'>
-        <CustomButton  onClick={toggleSavedPalettes}><OpenIcon /></CustomButton>
+        <CustomButton onClick={toggleSavedPalettes}><OpenIcon /></CustomButton>
       </div>
       <div className='menu-button'>
-        <CustomButton><SaveIcon /></CustomButton>
+        <CustomButton onClick={savePalette}><SaveIcon /></CustomButton>
       </div>
       <div className='menu-button'>
         <CustomButton onClick={toggleDark}>
-          <ThemeIcon/>
+          <ThemeIcon />
         </CustomButton>
       </div>
       <div className='menu-button'>
-        <CustomButton><HelpIcon/></CustomButton>
+        <CustomButton><HelpIcon /></CustomButton>
       </div>
-      {/* <div>
-        <SavedPalettes />
-      </div> */}
+      {userMenu &&
+        <div className='user-menu'>
+          <UserMenu currentUser={currentUser}/>
+        </div>
+      }
     </div>
   )
 }

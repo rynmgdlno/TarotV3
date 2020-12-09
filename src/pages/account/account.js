@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+
+import CustomButton from '../../components/custom-button/custom-button'
 import Submit from '../../components/submit/submit';
 import FormInput from '../../components/form-input/form-input';
 
@@ -47,31 +49,34 @@ class Account extends Component {
     } = this.state;
     return (
       <div>
-        <h1 className="bigFont">ACCOUNT</h1>
-        <h2 className="medFont">{username}</h2>
-        <p></p>
-        <FormInput
-          className="textInput"
-          name={'currentPassword'}
-          type={'password'}
-          placeholder={'current password'}
-          onChange={this.handleChange}/>
-        <p></p>
-        <FormInput 
-        className="textInput"
-        name={'newPassword'}
-        type={'password'}
-        placeholder={'new password'}
-        onChange={this.handleChange}/>
-        <p></p>
-        <FormInput 
-        className="textInput"
-        name={'newEmail'}
-        type={"text"}
-        placeholder={"new email"}
-        onChange={this.handleChange}/>
-        <p></p>
-        <Submit />
+        <div>
+          <CustomButton>Sign Out</CustomButton>
+          <h2>Change Account Settings:</h2>
+          <h2 className="medFont">{username}</h2>
+          <p></p>
+          <FormInput
+            // className="textInput"
+            name={'currentPassword'}
+            type={'password'}
+            placeholder={'current password'}
+            onChange={this.handleChange} />
+          <p></p>
+          <FormInput
+            // className="textInput"
+            name={'newPassword'}
+            type={'password'}
+            placeholder={'new password'}
+            onChange={this.handleChange} />
+          <p></p>
+          <FormInput
+            // className="textInput"
+            name={'newEmail'}
+            type={"text"}
+            placeholder={"new email"}
+            onChange={this.handleChange} />
+          <p></p>
+          <Submit />
+        </div>
       </div>
     )
   }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Route, HashRouter } from 'react-router-dom';
 import Splash from './pages/splash/splash.js';
 import Register from './pages/register/register.js';
@@ -9,6 +9,21 @@ import './App.scss';
 
 
 const App = () => {
+  // const [currentUser, setCurrentUser] = useState(null);
+  
+  
+  // useEffect(() => {
+  //   let unsubscribeFromAuth = null
+  //   unsubscribeFromAuth = auth.onAuthStateChanged(user => {
+  //     setCurrentUser({ user })
+  //     console.log(user)
+  //   })
+  //   return () => {
+  //     unsubscribeFromAuth();
+  //   }
+  // },[])
+
+
   return (
     <div className='App'>
       <HashRouter basename='/'>
