@@ -1,5 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+
+// import { paletteTest } from '../../firebase/firebase.utils'
 
 import UserMenu from '../user-menu/user-menu'
 import CustomButton from '../custom-button/custom-button'
@@ -12,17 +13,20 @@ import HelpIcon from '../icons/icon-components/help.icon'
 import './menu.styles.scss'
 import '../icons/icon.styles.scss'
 
-const Menu = ({ toggleDark, toggleSavedPalettes, userMenu, toggleUserMenu, currentUser, savePalette }) => {
+const Menu = ({ toggleDark, toggleSavedPalettes, userMenu, toggleUserMenu, currentUser, togglePalettePopup, signOutSavedPalettes, updatePalettes }) => {
   return (
     <div className='menu-container'>
       <div className='menu-button'>
         <CustomButton onClick={toggleUserMenu}><UserIcon /></CustomButton>
       </div>
       <div className='menu-button'>
-        <CustomButton onClick={toggleSavedPalettes}><OpenIcon /></CustomButton>
+        <CustomButton disabled={!currentUser} onClick={() => {
+          updatePalettes()
+          toggleSavedPalettes()
+        }}><OpenIcon /></CustomButton>
       </div>
       <div className='menu-button'>
-        <CustomButton onClick={savePalette}><SaveIcon /></CustomButton>
+        <CustomButton onClick={togglePalettePopup}><SaveIcon /></CustomButton>
       </div>
       <div className='menu-button'>
         <CustomButton onClick={toggleDark}>
@@ -34,7 +38,7 @@ const Menu = ({ toggleDark, toggleSavedPalettes, userMenu, toggleUserMenu, curre
       </div>
       {userMenu &&
         <div className='user-menu'>
-          <UserMenu currentUser={currentUser}/>
+          <UserMenu currentUser={currentUser} signOutSavedPalettes={signOutSavedPalettes}/>
         </div>
       }
     </div>

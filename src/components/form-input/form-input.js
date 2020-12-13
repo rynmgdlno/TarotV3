@@ -12,6 +12,7 @@ const FormInput = ({
   children,
   label,
   searchActive,
+  // onChange,
   ...props
 }) => {
   
@@ -24,7 +25,8 @@ const FormInput = ({
         type={type}
         placeholder={placeholder}
         value={value}
-        className={`text-input ${searchActive}`}
+        {...props}
+        // className={`text-input ${searchActive}`}
         style={error && {border: 'solid 1px red'}}
       />
       { error && <p>{ error }</p>}
@@ -38,12 +40,12 @@ FormInput.defaultProps = {
 }
 
 FormInput.propTypes = {
-  name: PropTypes.string.isRequired,
+  // name: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
   type: PropTypes.oneOf(['text', 'number', 'password']),
   className: PropTypes.string,
   value: PropTypes.any,
-  onChange: PropTypes.func.isRequired
+  // onChange: PropTypes.func.isRequired
 }
 
 export default FormInput;

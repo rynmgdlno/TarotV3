@@ -4,7 +4,7 @@ import { auth, signInWithGoogle } from '../../firebase/firebase.utils'
 import CustomButton from '../custom-button/custom-button'
 import FormInput from '../form-input/form-input'
 
-const UserMenu = ({ currentUser }) => {
+const UserMenu = ({ currentUser, signOutSavedPalettes }) => {
   const [showAccount, setShowAccount] = useState(false)
   const user = currentUser ?
     currentUser.displayName :
@@ -20,14 +20,18 @@ const UserMenu = ({ currentUser }) => {
         {
           !currentUser ?
             <div>
-            <p>Sign In</p>
-            <FormInput/>
-            <FormInput/>
+              <p>Sign In</p>
+              <FormInput />
+              <FormInput />
               <CustomButton className='splash-button'>Sign In</CustomButton>
               <CustomButton className='splash-button' onClick={signInWithGoogle}>Google Sign In</CustomButton>
+              {/* <CustomButton className='splash-button' onClick={signInWithFacebook}>Facebook Log In</CustomButton> */}
             </div> :
             <div className='user-button-container'>
-              <CustomButton className='splash-button' onClick={() => auth.signOut()}>Sign Out</CustomButton>
+              <CustomButton className='splash-button' onClick={() => {
+              signOutSavedPalettes()
+              auth.signOut()
+              }}>Sign Out</CustomButton>
               <CustomButton className='splash-button' onClick={toggleShowAccount}>Account Settings</CustomButton>
             </div>
         }

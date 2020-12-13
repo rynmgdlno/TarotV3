@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { HamburgerSqueeze } from 'react-animated-burgers'
-import { useSwipeable } from 'react-swipeable'
-import { auth, firestore, createUserProfileDocument, createPaletteDocument } from '../../firebase/firebase.utils'
+// import { useSwipeable } from 'react-swipeable'
+import { auth, firestore, createUserProfileDocument } from '../../firebase/firebase.utils'
 
 import TopBar from '../../components/top-bar/top-bar.js'
 import ComposerPane from '../../components/composer-pane/composer-pane.js'
 import Menu from '../../components/menu/menu.js'
+import SavePalettePopup from '../../components/save-palette-popup/save-palette-popop'
 import SavedPalettes from '../../components/saved-palettes/saved-palettes.js'
 
 import './tarot.scss'
@@ -13,7 +14,7 @@ import './menu-animate.css'
 import './saved-palettes-animate.css'
 
 import data from '../../data'
-import fakeResult from '../../fake-result'
+// import fakeResult from '../../fake-result'
 
 class Tarot extends Component {
   constructor(props) {
@@ -22,21 +23,21 @@ class Tarot extends Component {
       currentUser: null,
       query: '',
       colorEditor: data,
-      colorResult: fakeResult,
       savedPalettes: [],
       isActive: false,
       menuInitialClass: 'menu-animate-off',
       containerInitialClass: 'container-animate-off',
       isDark: true,
       showPalettes: false,
-      userMenu: false
+      userMenu: false,
+      savePalettePopup: false
     }
   }
 
   unsubscribeFromAuth = null
 
   componentDidMount() {
-    let newSavedPalettes = []
+
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
@@ -48,15 +49,10 @@ class Tarot extends Component {
             }
           })
         })
-        firestore.collection(`users/${userAuth.uid}/palettes`).get().then(function(querySnapshot) {
-          querySnapshot.forEach(function(doc) {
-            newSavedPalettes.push(doc.data())
-            // console.log(doc.data())
-          })
-        })
+
       }
-      this.setState({ currentUser: userAuth})
-      this.setState({ savedPalettes: newSavedPalettes})
+      this.setState({ currentUser: userAuth })
+      this.updatePalettes()
     })
   }
 
@@ -64,22 +60,19 @@ class Tarot extends Component {
     this.unsubscribeFromAuth();
   }
 
-  toggleMenu = () => {
-    this.setState({ 
-      isActive: !this.state.isActive, 
-      menuInitialClass: 'menu-animate-return', 
-      containerInitialClass: 'container-animate-return'})
-    if (this.state.showPalettes) {
-      this.setState({ showPalettes: false})
-    }
-    if (this.state.userMenu) {
-      this.setState({ userMenu: false})
-    }
-  }
 
-  toggleUserMenu = () => {
-    const userMenu = this.state.userMenu
-    this.setState({ userMenu: !userMenu })
+
+  updatePalettes = async () => {
+    if (this.state.currentUser) {
+      let newSavedPalettes = []
+      const currentUser = this.state.currentUser.id
+      const palettes = firestore.collection(`users/${currentUser}/palettes/`)
+      const snapShot = await palettes.get()
+      snapShot.docs.forEach((doc) => {
+        newSavedPalettes.push(doc.data())
+      })
+      this.setState({ savedPalettes: newSavedPalettes })
+    }
   }
 
   toggleSavedPalettes = () => {
@@ -96,9 +89,51 @@ class Tarot extends Component {
     this.toggleSavedPalettes()
   }
 
-  savePalette = () => {
-    const paletteName = prompt('Palette Name: ')
-    createPaletteDocument(this.state.currentUser, this.state.colorEditor, paletteName)
+  togglePalettePopup = () => {
+    const savePalettePopup = this.state.savePalettePopup
+    this.setState({ savePalettePopup: !savePalettePopup })
+    if (this.state.isActive) {
+      this.toggleMenu()
+    }
+  }
+
+  signOutSavedPalettes = () => {
+    auth.onAuthStateChanged(async userAuth => {
+      if (!userAuth) {
+        this.setState({ savedPalettes: [] })
+      } else {
+        this.updatePalettes()
+      }
+    })
+  }
+
+  toggleRename = () => {
+    this.setState({ renamePopup: !this.state.renamePopup })
+    if (this.state.showPalettes) {
+      this.setState({ showPalettes: false })
+    }
+    if (this.state.isActive) {
+      this.setState({ isActive: false })
+    }
+  }
+
+  toggleMenu = () => {
+    this.setState({
+      isActive: !this.state.isActive,
+      menuInitialClass: 'menu-animate-return',
+      containerInitialClass: 'container-animate-return'
+    })
+    if (this.state.showPalettes) {
+      this.setState({ showPalettes: false })
+    }
+    if (this.state.userMenu) {
+      this.setState({ userMenu: false })
+    }
+  }
+
+  toggleUserMenu = () => {
+    const userMenu = this.state.userMenu
+    this.setState({ userMenu: !userMenu })
   }
 
   toggleDark = () => {
@@ -114,7 +149,7 @@ class Tarot extends Component {
 
   sliderChange = (e) => {
     const newColors = this.state.colorEditor
-    const id = e.target.id
+    const id = e.target.attributes.getNamedItem('colorid').value
     const color = e.target.name
     const value = e.target.value
     newColors[id][color] = value
@@ -133,7 +168,7 @@ class Tarot extends Component {
     }
     const newHex = newHexR + newHexG + newHexB
     newColors[id]['hex'] = newHex
-    this.setState({ colorEditor: newColors})
+    this.setState({ colorEditor: newColors })
   }
 
   render() {
@@ -141,49 +176,65 @@ class Tarot extends Component {
     const menuAnimateInitial = this.state.menuInitialClass
     const containerAnimateInitial = this.state.containerInitialClass
     const showPalettes = this.state.showPalettes
-    const sliderChange = this.sliderChange
     const userMenu = this.state.userMenu
     const currentUser = this.state.currentUser
-    const savePalette = this.savePalette
+    const colorEditor = this.state.colorEditor
+    const savePalettePopup = this.state.savePalettePopup
+    const sliderChange = this.sliderChange
+    const togglePalettePopup = this.togglePalettePopup
+    const updatePalettes = this.updatePalettes
 
     return (
-      <div onSwipe={this.onSwipe} className='tarot'>
+      <div className='tarot'>
         <div>
-          <TopBar/>
-          <HamburgerSqueeze 
-          className='hamburger' 
-          buttonWidth={30}
-          isActive={this.state.isActive} 
-          onClick={this.toggleMenu} 
-          barColor='#757575'
+          <TopBar />
+          <HamburgerSqueeze
+            className='hamburger'
+            buttonWidth={30}
+            isActive={this.state.isActive}
+            onClick={() => {
+              this.toggleMenu()
+            }}
+            barColor='#757575'
           />
         </div>
         <div className='grid-container'>
           <div className={menuAnimate ? 'pane-container container-animate' : `pane-container ${containerAnimateInitial}`}>
             <div className='composer-pane'>
-              <ComposerPane data={this.state.colorEditor} sliderChange={sliderChange}/>
+              <ComposerPane data={this.state.colorEditor} sliderChange={sliderChange} updatePalettes={updatePalettes} />
             </div>
           </div>
           <div className={menuAnimate ? 'menu menu-animate' : `menu ${menuAnimateInitial}`}>
-            <Menu 
-            toggleDark={this.toggleDark} 
-            toggleSavedPalettes={this.toggleSavedPalettes} 
-            userMenu={userMenu} 
-            toggleUserMenu={this.toggleUserMenu} 
-            currentUser={currentUser}
-            savePalette={savePalette}
+            <Menu
+              toggleDark={this.toggleDark}
+              toggleSavedPalettes={this.toggleSavedPalettes}
+              userMenu={userMenu}
+              toggleUserMenu={this.toggleUserMenu}
+              currentUser={currentUser}
+              togglePalettePopup={togglePalettePopup}
+              signOutSavedPalettes={this.signOutSavedPalettes}
+              updatePalettes={updatePalettes}
             />
           </div>
         </div>
+        <div>
+          {
+            savePalettePopup ?
+              <SavePalettePopup currentUser={currentUser} colorEditor={colorEditor} togglePalettePopup={togglePalettePopup} /> :
+              null
+          }
+        </div>
         <div className={
-          showPalettes ? 
-          'saved-palettes-animate saved-palettes-container' : 
-          'saved-palettes-animate-return saved-palettes-container'}>
-          <SavedPalettes 
-          loadSavedPalette={this.loadSavedPalette}
-          toggleMenu={this.toggleMenu}
-          toggleSavedPalettes={this.toggleSavedPalettes}
-          savedPalettes={this.state.savedPalettes}
+          showPalettes ?
+            'saved-palettes-animate saved-palettes-container' :
+            'saved-palettes-animate-return saved-palettes-container'}>
+          <SavedPalettes
+            loadSavedPalette={this.loadSavedPalette}
+            toggleMenu={this.toggleMenu}
+            toggleSavedPalettes={this.toggleSavedPalettes}
+            savedPalettes={this.state.savedPalettes}
+            currentUser={currentUser}
+            updatePalettes={updatePalettes}
           />
         </div>
       </div>

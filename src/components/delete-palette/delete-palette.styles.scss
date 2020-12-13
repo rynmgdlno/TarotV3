@@ -1,0 +1,18 @@
+.delete-container {
+  position: fixed;
+  top: 40%;
+  right: 20vw;
+  width: 60vw;
+  height: auto;
+
+  display: flex;
+  flex-direction: column;
+
+  background-color: #FAFAFA;
+  border-radius: 10px;
+  padding: 10px;
+  span, input {
+    margin-bottom: 10px;
+  }
+}
+

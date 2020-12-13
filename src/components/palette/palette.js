@@ -1,19 +1,34 @@
-import React from 'react'
+import React, { useState } from 'react'
+
+// import { renamePalette } from '../../firebase/firebase.utils'
 
 import PaletteColor from '../palette-color/palette-color'
 import CustomButton from '../custom-button/custom-button'
+import RenamePalette from '../rename-palette/rename-palette'
+import DeletePalette from '../delete-palette/delete-palette'
 
 import './palette.styles.scss'
 import './palette-animate.css'
 
-const Palette = ({ paletteName, colorInfo, menuToggle, activeMenu, loadSavedPalette, toggleMenu, toggleSavedPalettes }) => {
-  // const onclick = 90
+const Palette = ({ paletteName, colorInfo, menuToggle, activeMenu, loadSavedPalette, toggleSavedPalettes, toggleMenu, updatePalettes, currentUser }) => {
+
+  const [renamePopup, setRenamePopup] = useState(false)
+  const [deletePopup, setDeletePopup] = useState(false)
+
+  const toggleRename = () => {
+    setRenamePopup(!renamePopup)
+  }
+  
+  const toggleDelete = () => {
+    setDeletePopup(!deletePopup)
+  }
+
   return (
     <div className={
       activeMenu === paletteName ? 'palette-container-open' : 'palette-container-closed'
     }>
       <div className='palette'>
-        <div className='palette-title'><span>{paletteName}</span></div>
+        <div className='palette-title'><span className='palette-name'>{paletteName}</span></div>
         <div className='palette-colors-container'>
           {Object.entries(colorInfo).map((color) => (
             <div onClick={() => menuToggle(paletteName)} key={color[1].id}>
@@ -34,10 +49,36 @@ const Palette = ({ paletteName, colorInfo, menuToggle, activeMenu, loadSavedPale
         <CustomButton
           onClick={() => {
             loadSavedPalette(colorInfo)
-          }} 
+          }}
           className='palette-button'>open</CustomButton>
-        <CustomButton className='palette-button'>rename</CustomButton>
-        <CustomButton className='palette-button'>delete</CustomButton>
+        <CustomButton className='palette-button' onClick={() => {
+          toggleRename()
+        }}>rename</CustomButton>
+        <CustomButton className='palette-button' onClick={toggleDelete}>delete</CustomButton>
+      </div>
+      <div>{
+        renamePopup ?
+          <RenamePalette 
+          toggleRename={toggleRename} 
+          paletteName={paletteName} 
+          updatePalettes={updatePalettes} 
+          currentUser={currentUser}
+          toggleMenu={toggleMenu}
+          toggleSavedPalettes={toggleSavedPalettes}
+          /> :
+          null}
+      </div>
+      <div>{
+        deletePopup ?
+          <DeletePalette 
+          toggleDelete={toggleDelete} 
+          paletteName={paletteName} 
+          updatePalettes={updatePalettes} 
+          currentUser={currentUser}
+          toggleMenu={toggleMenu}
+          toggleSavedPalettes={toggleSavedPalettes}
+          /> :
+          null}
       </div>
     </div>
   )
