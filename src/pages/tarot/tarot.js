@@ -22,6 +22,8 @@ class Tarot extends Component {
     this.state = {
       currentUser: null,
       query: '',
+      queryResult: [],
+      activeQueryResult: 0,
       colorEditor: data,
       savedPalettes: [],
       isActive: false,
@@ -30,7 +32,9 @@ class Tarot extends Component {
       isDark: true,
       showPalettes: false,
       userMenu: false,
-      savePalettePopup: false
+      savePalettePopup: false,
+      touchStart: 0,
+      touchEnd: 0
     }
   }
 
@@ -60,7 +64,53 @@ class Tarot extends Component {
     this.unsubscribeFromAuth();
   }
 
+  handleTouchStart = (e) => {
+    this.setState({touchStart: e.targetTouches[0].clientX})
+    this.setState({ touchEnd: e.targetTouches[0].clientX})
+  }
+  
+  handleTouchMove = (e) => {
+    this.setState({touchEnd: e.targetTouches[0].clientX})
+  }
 
+  handleTouchEnd = (e) => {
+    if (this.state.touchStart - this.state.touchEnd > 150) {
+      if (this.state.activeQueryResult === 0) {
+        this.setState({ activeQueryResult: 9})
+      } else {
+        this.setState({ activeQueryResult: this.state.activeQueryResult - 1})
+      }
+    }
+
+    if (this.state.touchStart - this.state.touchEnd < -150) {
+      if (this.state.activeQueryResult === 9) {
+        this.setState({ activeQueryResult: 0})
+      } else {
+        this.setState({ activeQueryResult: this.state.activeQueryResult + 1})
+      }
+    }
+    // console.log(this.state.queryResult)
+    if ((this.state.queryResult.length)) {
+      console.log(this.state.activeQueryResult)
+      this.setState({ colorEditor: this.state.queryResult[this.state.activeQueryResult]})
+    }
+    // console.log(this.state.activeQueryResult)
+  }
+  
+
+  onChangeQuery = (e) => {
+    const query = e.target.value
+    this.setState({ query: query})
+  }
+
+  fetchQuery = async () => {
+    const query = this.state.query
+    const activeQueryResult = this.state.activeQueryResult
+    fetch(`http://localhost:5000/?query=${query}`)
+      .then(response => response.json())
+      .then(data => this.setState({ queryResult: data}, () => this.setState({ colorEditor: data[activeQueryResult]}))) 
+      // this.setState({ colorEditor: data[0]})
+  }
 
   updatePalettes = async () => {
     if (this.state.currentUser) {
@@ -183,11 +233,24 @@ class Tarot extends Component {
     const sliderChange = this.sliderChange
     const togglePalettePopup = this.togglePalettePopup
     const updatePalettes = this.updatePalettes
+    const onChangeQuery = this.onChangeQuery
+    const fetchQuery = this.fetchQuery
+    const handleTouchStart = this.handleTouchStart
+    const handleTouchEnd = this.handleTouchEnd
+    const handleTouchMove = this.handleTouchMove
 
     return (
-      <div className='tarot'>
+      <div 
+      className='tarot' 
+      onTouchStart={e => handleTouchStart(e)}
+      onTouchMove={e => handleTouchMove(e)}
+      onTouchEnd={() => handleTouchEnd()}
+      >
         <div>
-          <TopBar />
+          <TopBar 
+            onChangeQuery={onChangeQuery}
+            fetchQuery={fetchQuery}
+          />
           <HamburgerSqueeze
             className='hamburger'
             buttonWidth={30}
