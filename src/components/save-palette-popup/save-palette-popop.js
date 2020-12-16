@@ -47,6 +47,7 @@ const SavePalettePopup = ({ currentUser, colorEditor, togglePalettePopup }) => {
             {
               nameExists ? <p className='name-alert'>name already used</p> : ''
             }
+            <CustomButton onClick={togglePalettePopup}>Cancel</CustomButton>
             <CustomButton
               type='submit'
               onClick={savePalette}

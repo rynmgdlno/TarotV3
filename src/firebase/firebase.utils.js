@@ -12,6 +12,16 @@ const config = {
   measurementId: "G-CRSFEK7EY9"
 };
 
+firebase.initializeApp(config)
+
+export const auth = firebase.auth()
+export const firestore = firebase.firestore()
+
+// Google Sign In //
+const googleProvider = new firebase.auth.GoogleAuthProvider()
+googleProvider.setCustomParameters({ prompt: 'select_account' })
+export const signInWithGoogle = () => auth.signInWithPopup(googleProvider)
+
 // Adds User Document to DB on Atuhentication //
 export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!userAuth) return;
@@ -32,6 +42,56 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
     }
   }
   return userRef
+}
+
+// Re-Authenticate User 
+export const userReAuth = async (currentPassword) => {
+  const user = auth.currentUser
+  const credential = firebase.auth.EmailAuthProvider.credential(
+    user.email,
+    currentPassword
+  )
+  try {
+    await user.reauthenticateWithCredential(credential)
+    console.log('reauth success')
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+// Update Username
+export const updateUserName = async (newName) => {
+  const user = auth.currentUser
+  try {
+    await user.updateProfile({
+      displayName: newName
+    })
+    console.log('success user')
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+// Update Email
+export const updateEmail = async (newEmail) => {
+  const user = auth.currentUser
+  try {
+    await user.updateEmail(newEmail)
+    console.log('success email')
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+// Update Password
+export const updatePassword = async (newPassword) => {
+  const user = auth.currentUser
+  try {
+    await user.updatePassword(newPassword)
+    console.log('success password')
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 // Adds palette to user document //
@@ -78,21 +138,12 @@ export const renamePalette = async (paletteName, currentUser, newName) => {
 
   try {
     await docToUpdate.set({
-      name: newName}, {merge: true }
+      name: newName
+    }, { merge: true }
     )
   } catch (error) {
     console.log(error)
   }
 }
-
-firebase.initializeApp(config)
-
-export const auth = firebase.auth()
-export const firestore = firebase.firestore()
-
-// Google Sign In //
-const googleProvider = new firebase.auth.GoogleAuthProvider()
-googleProvider.setCustomParameters({ prompt: 'select_account' })
-export const signInWithGoogle = () => auth.signInWithPopup(googleProvider)
 
 export default firebase
