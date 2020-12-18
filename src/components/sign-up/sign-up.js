@@ -12,7 +12,8 @@ const SignUp = ({ toggleSignUp }) => {
     displayName: '',
     email: '',
     password: '',
-    confirmPassword: ''
+    confirmPassword: '',
+    signup: null
   })
 
   const { displayName, email, password, confirmPassword } = userInfo
@@ -23,12 +24,13 @@ const SignUp = ({ toggleSignUp }) => {
       ...userInfo,
       [name]: value
     })
+    console.log(userInfo.email)
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const { user } = await auth.createUserWithEmailAndPassword(email, password)
+      var { user } = await auth.createUserWithEmailAndPassword(email, password)
       await createUserProfileDocument(user, { displayName })
       setUserInfo({
         displayName: '',
@@ -37,7 +39,9 @@ const SignUp = ({ toggleSignUp }) => {
         confirmPassword: ''
       })
     } catch (error) {
-      console.log(error)
+      if (error.code === 'auth/email-already-in-use') {
+        setUserInfo({ signup: 'email in use'})
+      }
     }
   }
 
@@ -58,9 +62,6 @@ const SignUp = ({ toggleSignUp }) => {
         type='email'
         onChange={handleChange}
         required />
-      {
-        !EmailValidator.validate(email) && email.length > 0 && <p>Enter a valid email</p>
-      }
       <FormInput
         name='password'
         value={password}
@@ -74,9 +75,6 @@ const SignUp = ({ toggleSignUp }) => {
         placeholder='confirm password'
         type='password' onChange={handleChange}
         required />
-      {
-        confirmPassword.length > 0 && password !== confirmPassword ? <p>Passwords must match</p> : ''
-      }
       <CustomButton className='splash-button' onClick={toggleSignUp}>Cancel</CustomButton>
       <CustomButton className='splash-button' type='submit' onClick={handleSubmit} disabled={
         displayName && email && password && confirmPassword &&
@@ -84,6 +82,16 @@ const SignUp = ({ toggleSignUp }) => {
           password === confirmPassword ?
           false : true
       }>Sign Up</CustomButton>
+      <p>{userInfo.signup}</p>
+      {
+        !EmailValidator.validate(email) && email && <p>invalid email</p>
+      }
+      {
+        confirmPassword && password !== confirmPassword && <p>passwords must match</p> 
+      }
+      {
+        password && password.length < 6 && <p>password must be 6 characters</p> 
+      }
     </div>
   )
 }

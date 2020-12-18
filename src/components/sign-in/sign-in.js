@@ -55,6 +55,12 @@ const SignIn = ({toggleSignUp}) => {
       }>Sign In</CustomButton>
       <CustomButton className='splash-button' onClick={signInWithGoogle}>Google Sign In</CustomButton>
       <CustomButton className='splash-button' onClick={toggleSignUp}>Create New Account</CustomButton>
+      {
+        userInfo.email && !EmailValidator.validate(userInfo.email) && <p>invalid email</p>
+      }
+      {
+        userInfo.password && userInfo.password.length < 6 && <p>password must be 6 characters</p>
+      }
     </div>
   )
 }

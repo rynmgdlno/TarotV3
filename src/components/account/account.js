@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import * as EmailValidator from 'email-validator'
 
-import { auth, updateUserName, updateEmail, updatePassword, userReAuth } from '../../firebase/firebase.utils'
+import { updateUserName, updateEmail, updatePassword, userReAuth } from '../../firebase/firebase.utils'
 
 import CustomButton from '../custom-button/custom-button'
 import FormInput from '../form-input/form-input';
@@ -13,7 +13,8 @@ const Account = ({ toggleShowAccount }) => {
     newEmail: '',
     currentPassword: '',
     newPassword: '',
-    confirmNewPassword: ''
+    confirmNewPassword: '',
+    passwordError: null
   })
 
   // const [buttonDisabled, setButtonDisabled] = useState(true)
@@ -55,9 +56,15 @@ const Account = ({ toggleShowAccount }) => {
       toggleShowAccount()
     }
     if (newPassword && confirmNewPassword && newPassword === confirmNewPassword) {
-      await userReAuth(currentPassword)
-      await updatePassword(newPassword)
-      console.log('password update success')
+      const curPassSuccess = await userReAuth(currentPassword)
+      if (curPassSuccess.code === 'auth/too-many-reuests') {
+        setUserInfo({ passwordError: 'too many attempts'})
+      }
+      if (curPassSuccess.code === 'auth/wrong-password') {
+        setUserInfo({ passwordError: 'incorrect password'})
+      }
+      await updatePassword(currentPassword, newPassword)
+      console.log(curPassSuccess.code)
       clearUserInfo()
       toggleShowAccount()
     }
@@ -82,6 +89,8 @@ const Account = ({ toggleShowAccount }) => {
         placeholder="current password"
         onChange={handleChange}
       />
+
+      <p>{userInfo.passwordError}</p>
       <p>Change Email:</p>
       <FormInput
         name='newEmail'
@@ -91,7 +100,7 @@ const Account = ({ toggleShowAccount }) => {
         onChange={handleChange}
       />
       {
-        !EmailValidator.validate(newEmail) && newEmail.length > 0 ? <p>enter a valid email</p> : null
+        !EmailValidator.validate(newEmail) && newEmail ? <p>enter a valid email</p> : null
       }
       <p>Change Password:</p>
       <FormInput

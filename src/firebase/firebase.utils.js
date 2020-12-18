@@ -13,7 +13,6 @@ const config = {
 };
 
 firebase.initializeApp(config)
-
 export const auth = firebase.auth()
 export const firestore = firebase.firestore()
 
@@ -38,7 +37,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
         ...additionalData
       })
     } catch (error) {
-      console.log('error creating user', error.message)
+      return error
     }
   }
   return userRef
@@ -55,7 +54,7 @@ export const userReAuth = async (currentPassword) => {
     await user.reauthenticateWithCredential(credential)
     console.log('reauth success')
   } catch (error) {
-    console.log(error)
+    return error
   }
 }
 
@@ -84,13 +83,13 @@ export const updateEmail = async (newEmail) => {
 }
 
 // Update Password
-export const updatePassword = async (newPassword) => {
+export const updatePassword = async (currentPassword, newPassword) => {
   const user = auth.currentUser
   try {
+    await userReAuth(currentPassword)
     await user.updatePassword(newPassword)
-    console.log('success password')
   } catch (error) {
-    console.log(error)
+    return error
   }
 }
 

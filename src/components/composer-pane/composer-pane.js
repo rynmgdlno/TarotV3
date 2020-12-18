@@ -6,7 +6,7 @@ import './composer-pane-animate.css'
 
 const newEditorHistoryArray = []
 
-const ComposerPane = ({data, sliderChange}) => {
+const ComposerPane = ({data, sliderChange, handleTouchStart, handleTouchMove, handleTouchEnd, swipeDelta }) => {
   const [activeColor, setActiveColor] = useState('')
   const [editorHasOpened, setEditorHasOpened] = useState([])
   const [isActive, setIsActive] = useState(false)
@@ -21,6 +21,7 @@ const ComposerPane = ({data, sliderChange}) => {
     }
     setComposerInitialClass('composer-pane-animate-return')
     // console.log(id)
+    composerPaneToggle(id)
   }
 
   const composerPaneToggle = (id) => {
@@ -44,6 +45,10 @@ const ComposerPane = ({data, sliderChange}) => {
               setEditorHasOpened={setEditorHasOpened}
               sliderChange={sliderChange}
               composerPaneToggle={composerPaneToggle}
+              handleTouchStart={handleTouchStart}
+              handleTouchMove={handleTouchMove}
+              handleTouchEnd={handleTouchEnd}
+              swipeDelta={swipeDelta}
             />
           </div>
         </div>

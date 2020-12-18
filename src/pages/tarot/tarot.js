@@ -23,6 +23,7 @@ class Tarot extends Component {
       currentUser: null,
       query: '',
       queryResult: [],
+      queryResultLength: null,
       activeQueryResult: 0,
       colorEditor: data,
       savedPalettes: [],
@@ -34,11 +35,28 @@ class Tarot extends Component {
       userMenu: false,
       savePalettePopup: false,
       touchStart: 0,
-      touchEnd: 0
+      touchEnd: 0,
+      swipeDelta: false
     }
   }
 
   unsubscribeFromAuth = null
+
+
+
+
+  //* TESTING CONSOLE PRINTER FUNCTIONS //*
+
+  testPrint = () => {
+    console.log(this.state.queryResultLength)
+  }
+
+
+
+  //* TESTING CONSOLE PRINTER FUNCTIONS //*
+
+
+
 
   componentDidMount() {
 
@@ -64,52 +82,69 @@ class Tarot extends Component {
     this.unsubscribeFromAuth();
   }
 
-  handleTouchStart = (e) => {
-    this.setState({touchStart: e.targetTouches[0].clientX})
-    this.setState({ touchEnd: e.targetTouches[0].clientX})
+  updateActiveColor = () => {
+    this.setState({ colorEditor: this.state.queryResult[this.state.activeQueryResult]})
   }
-  
+
+  handleTouchStart = (e) => {
+    this.setState({ touchStart: e.targetTouches[0].clientX })
+    this.setState({ touchEnd: e.targetTouches[0].clientX })
+  }
+
   handleTouchMove = (e) => {
-    this.setState({touchEnd: e.targetTouches[0].clientX})
+    this.setState({ touchEnd: e.targetTouches[0].clientX })
   }
 
   handleTouchEnd = (e) => {
-    if (this.state.touchStart - this.state.touchEnd > 150) {
+    const touchStart = this.state.touchStart
+    const touchEnd = this.state.touchEnd
+    const queryResultLength = this.state.queryResultLength
+    const activeQueryResult = this.state.activeQueryResult
+
+    // swipe left
+    if (touchStart - touchEnd > 150) {
       if (this.state.activeQueryResult === 0) {
-        this.setState({ activeQueryResult: 9})
+        this.setState({ activeQueryResult: queryResultLength - 1 }, () => this.updateActiveColor())
       } else {
-        this.setState({ activeQueryResult: this.state.activeQueryResult - 1})
+        this.setState({ activeQueryResult: activeQueryResult - 1 }, () => this.updateActiveColor())
       }
     }
 
-    if (this.state.touchStart - this.state.touchEnd < -150) {
-      if (this.state.activeQueryResult === 9) {
-        this.setState({ activeQueryResult: 0})
+    // swipe right
+    if (touchStart - touchEnd < -150) {
+      if (activeQueryResult === queryResultLength - 1) {
+        this.fetchQuery()
+        // this.setState({ activeQueryResult: 0 }, () => this.updateActiveColor())
       } else {
-        this.setState({ activeQueryResult: this.state.activeQueryResult + 1})
+        this.setState({ activeQueryResult: activeQueryResult + 1 }, () => this.updateActiveColor())
       }
     }
-    // console.log(this.state.queryResult)
-    if ((this.state.queryResult.length)) {
-      console.log(this.state.activeQueryResult)
-      this.setState({ colorEditor: this.state.queryResult[this.state.activeQueryResult]})
+
+    // sets toggle to prevent default onClick if swipe
+    if (Math.abs(parseInt(touchStart - touchEnd)) > 74) {
+      this.setState({ swipeDelta: true })
+    } else {
+      this.setState({ swipeDelta: false })
     }
-    // console.log(this.state.activeQueryResult)
   }
-  
 
   onChangeQuery = (e) => {
     const query = e.target.value
-    this.setState({ query: query})
+    this.setState({ query: query })
   }
 
   fetchQuery = async () => {
     const query = this.state.query
-    const activeQueryResult = this.state.activeQueryResult
-    fetch(`http://localhost:5000/?query=${query}`)
-      .then(response => response.json())
-      .then(data => this.setState({ queryResult: data}, () => this.setState({ colorEditor: data[activeQueryResult]}))) 
-      // this.setState({ colorEditor: data[0]})
+    const encodedQuery = encodeURIComponent(query).replace(/%20/g, "+");
+    // const queryResult = this.state.queryResult
+    // const activeQueryResult = this.state.activeQueryResult
+    const result = await fetch(`http://localhost:5000/?query=${encodedQuery}`)
+    // console.log(result)
+    const json = await result.json()
+    // console.log(json)
+    this.setState({ queryResult: json}, () => console.log(this.state.queryResult))
+    this.setState({ queryResultLength: json.length},() => console.log(this.state.queryResultLength))
+    this.setState({ colorEditor: this.state.queryResult[0]})
   }
 
   updatePalettes = async () => {
@@ -179,6 +214,7 @@ class Tarot extends Component {
     if (this.state.userMenu) {
       this.setState({ userMenu: false })
     }
+    this.testPrint()
   }
 
   toggleUserMenu = () => {
@@ -230,6 +266,7 @@ class Tarot extends Component {
     const currentUser = this.state.currentUser
     const colorEditor = this.state.colorEditor
     const savePalettePopup = this.state.savePalettePopup
+    const swipeDelta = this.state.swipeDelta
     const sliderChange = this.sliderChange
     const togglePalettePopup = this.togglePalettePopup
     const updatePalettes = this.updatePalettes
@@ -240,14 +277,9 @@ class Tarot extends Component {
     const handleTouchMove = this.handleTouchMove
 
     return (
-      <div 
-      className='tarot' 
-      onTouchStart={e => handleTouchStart(e)}
-      onTouchMove={e => handleTouchMove(e)}
-      onTouchEnd={() => handleTouchEnd()}
-      >
+      <div className='tarot'>
         <div>
-          <TopBar 
+          <TopBar
             onChangeQuery={onChangeQuery}
             fetchQuery={fetchQuery}
           />
@@ -264,7 +296,15 @@ class Tarot extends Component {
         <div className='grid-container'>
           <div className={menuAnimate ? 'pane-container container-animate' : `pane-container ${containerAnimateInitial}`}>
             <div className='composer-pane'>
-              <ComposerPane data={this.state.colorEditor} sliderChange={sliderChange} updatePalettes={updatePalettes} />
+              <ComposerPane
+                data={this.state.colorEditor}
+                sliderChange={sliderChange}
+                updatePalettes={updatePalettes}
+                handleTouchStart={handleTouchStart}
+                handleTouchMove={handleTouchMove}
+                handleTouchEnd={handleTouchEnd}
+                swipeDelta={swipeDelta}
+              />
             </div>
           </div>
           <div className={menuAnimate ? 'menu menu-animate' : `menu ${menuAnimateInitial}`}>
