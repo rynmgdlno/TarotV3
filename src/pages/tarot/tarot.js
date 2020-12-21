@@ -14,17 +14,19 @@ import './menu-animate.css'
 import './saved-palettes-animate.css'
 
 import data from '../../data'
-// import fakeResult from '../../fake-result'
 
 class Tarot extends Component {
   constructor(props) {
     super(props)
     this.state = {
       currentUser: null,
+      prevQuery: '',
       query: '',
       queryResult: [],
       queryResultLength: null,
       activeQueryResult: 0,
+      queryPages: 0,
+      currentPage: 1,
       colorEditor: data,
       savedPalettes: [],
       isActive: false,
@@ -47,9 +49,9 @@ class Tarot extends Component {
 
   //* TESTING CONSOLE PRINTER FUNCTIONS //*
 
-  testPrint = () => {
-    console.log(this.state.queryResultLength)
-  }
+  // testPrint = () => {
+  //   console.log(this.state.queryPages)
+  // }
 
 
 
@@ -100,6 +102,8 @@ class Tarot extends Component {
     const touchEnd = this.state.touchEnd
     const queryResultLength = this.state.queryResultLength
     const activeQueryResult = this.state.activeQueryResult
+    const page = this.state.currentPage
+    const queryPages = this.state.queryPages
 
     // swipe left
     if (touchStart - touchEnd > 150) {
@@ -112,39 +116,58 @@ class Tarot extends Component {
 
     // swipe right
     if (touchStart - touchEnd < -150) {
+      console.log(page)
       if (activeQueryResult === queryResultLength - 1) {
-        this.fetchQuery()
-        // this.setState({ activeQueryResult: 0 }, () => this.updateActiveColor())
+        // this.setState({ activeQueryResult: 0 })
+        this.setState({ activeQueryResult: 0 }, () => this.updateActiveColor())
+      } else if (page < queryPages && activeQueryResult === queryResultLength - 5) {
+        this.fetchNewPage()
+        this.setState({ activeQueryResult: activeQueryResult + 1 }, () => this.updateActiveColor())
       } else {
         this.setState({ activeQueryResult: activeQueryResult + 1 }, () => this.updateActiveColor())
       }
     }
 
     // sets toggle to prevent default onClick if swipe
+
+
     if (Math.abs(parseInt(touchStart - touchEnd)) > 74) {
       this.setState({ swipeDelta: true })
     } else {
       this.setState({ swipeDelta: false })
     }
+    console.log(activeQueryResult, queryResultLength)
   }
 
   onChangeQuery = (e) => {
     const query = e.target.value
     this.setState({ query: query })
   }
-
+  
   fetchQuery = async () => {
     const query = this.state.query
+    const currentPage = this.state.currentPage
     const encodedQuery = encodeURIComponent(query).replace(/%20/g, "+");
-    // const queryResult = this.state.queryResult
-    // const activeQueryResult = this.state.activeQueryResult
-    const result = await fetch(`http://localhost:5000/?query=${encodedQuery}`)
-    // console.log(result)
+    const result = await fetch(`http://localhost:5000/?query=${encodedQuery}&page=${currentPage}`)
     const json = await result.json()
-    // console.log(json)
-    this.setState({ queryResult: json}, () => console.log(this.state.queryResult))
-    this.setState({ queryResultLength: json.length},() => console.log(this.state.queryResultLength))
+    this.setState({ queryResult: json[2]})
+    this.setState({ queryPages: json[1]})
+    this.setState({ currentPage: json[0]})
+    this.setState({ queryResultLength: json[2].length})
     this.setState({ colorEditor: this.state.queryResult[0]})
+  }
+
+  fetchNewPage = async () => {
+    const newPage = this.state.currentPage + 1
+    this.setState({ currentPage: newPage})
+    const currentResult = this.state.queryResult
+    const query = this.state.query
+    const encodedQuery = encodeURIComponent(query).replace(/%20/g, "+")
+    const result = await fetch(`http://localhost:5000/?query=${encodedQuery}`)
+    const json = await result.json()
+    let augmentedQueryResult = currentResult.concat(json[2])
+    this.setState({ queryResult: augmentedQueryResult})
+    this.setState({ queryResultLength: augmentedQueryResult.length})
   }
 
   updatePalettes = async () => {
@@ -214,7 +237,6 @@ class Tarot extends Component {
     if (this.state.userMenu) {
       this.setState({ userMenu: false })
     }
-    this.testPrint()
   }
 
   toggleUserMenu = () => {
