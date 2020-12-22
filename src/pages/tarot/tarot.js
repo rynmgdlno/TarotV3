@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { HamburgerSqueeze } from 'react-animated-burgers'
-// import { useSwipeable } from 'react-swipeable'
 import { auth, firestore, createUserProfileDocument } from '../../firebase/firebase.utils'
 
 import TopBar from '../../components/top-bar/top-bar.js'
@@ -8,12 +7,14 @@ import ComposerPane from '../../components/composer-pane/composer-pane.js'
 import Menu from '../../components/menu/menu.js'
 import SavePalettePopup from '../../components/save-palette-popup/save-palette-popop'
 import SavedPalettes from '../../components/saved-palettes/saved-palettes.js'
+import Spinner from '../../components/spinner/spinner'
 
 import './tarot.scss'
 import './menu-animate.css'
 import './saved-palettes-animate.css'
 
 import data from '../../data'
+import CustomButton from '../../components/custom-button/custom-button'
 
 class Tarot extends Component {
   constructor(props) {
@@ -38,27 +39,13 @@ class Tarot extends Component {
       savePalettePopup: false,
       touchStart: 0,
       touchEnd: 0,
-      swipeDelta: false
+      swipeDelta: false,
+      isLoading: false,
+      noResults: false
     }
   }
 
   unsubscribeFromAuth = null
-
-
-
-
-  //* TESTING CONSOLE PRINTER FUNCTIONS //*
-
-  // testPrint = () => {
-  //   console.log(this.state.queryPages)
-  // }
-
-
-
-  //* TESTING CONSOLE PRINTER FUNCTIONS //*
-
-
-
 
   componentDidMount() {
 
@@ -85,7 +72,7 @@ class Tarot extends Component {
   }
 
   updateActiveColor = () => {
-    this.setState({ colorEditor: this.state.queryResult[this.state.activeQueryResult]})
+    this.setState({ colorEditor: this.state.queryResult[this.state.activeQueryResult] })
   }
 
   handleTouchStart = (e) => {
@@ -116,11 +103,9 @@ class Tarot extends Component {
 
     // swipe right
     if (touchStart - touchEnd < -150) {
-      console.log(page)
       if (activeQueryResult === queryResultLength - 1) {
-        // this.setState({ activeQueryResult: 0 })
         this.setState({ activeQueryResult: 0 }, () => this.updateActiveColor())
-      } else if (page < queryPages && activeQueryResult === queryResultLength - 5) {
+      } else if (page < queryPages && activeQueryResult === queryResultLength - 10) {
         this.fetchNewPage()
         this.setState({ activeQueryResult: activeQueryResult + 1 }, () => this.updateActiveColor())
       } else {
@@ -136,38 +121,46 @@ class Tarot extends Component {
     } else {
       this.setState({ swipeDelta: false })
     }
-    console.log(activeQueryResult, queryResultLength)
   }
 
   onChangeQuery = (e) => {
     const query = e.target.value
     this.setState({ query: query })
   }
-  
+
   fetchQuery = async () => {
+    this.setState({ isLoading: true})
     const query = this.state.query
-    const currentPage = this.state.currentPage
-    const encodedQuery = encodeURIComponent(query).replace(/%20/g, "+");
-    const result = await fetch(`http://localhost:5000/?query=${encodedQuery}&page=${currentPage}`)
+    this.setState({ currentPage: 1 })
+    const result = await fetch(`http://localhost:5000/?query=${query}&page=1`)
     const json = await result.json()
-    this.setState({ queryResult: json[2]})
-    this.setState({ queryPages: json[1]})
-    this.setState({ currentPage: json[0]})
-    this.setState({ queryResultLength: json[2].length})
-    this.setState({ colorEditor: this.state.queryResult[0]})
+    if (!json[2].length) {
+      this.setState({ isLoading: false })
+      this.setState({ noResults: true })
+    } else {
+      this.setState({ queryResult: json[2] })
+      this.setState({ queryPages: json[1] })
+      this.setState({ currentPage: json[0] })
+      this.setState({ activeQueryResult: 0 })
+      this.setState({ queryResultLength: json[2].length })
+      this.setState({ colorEditor: this.state.queryResult[0] })
+      this.setState({ isLoading: false})
+    }
   }
 
   fetchNewPage = async () => {
+    // this.setState({ isLoading: true})
     const newPage = this.state.currentPage + 1
-    this.setState({ currentPage: newPage})
+    this.setState({ currentPage: newPage })
     const currentResult = this.state.queryResult
     const query = this.state.query
     const encodedQuery = encodeURIComponent(query).replace(/%20/g, "+")
-    const result = await fetch(`http://localhost:5000/?query=${encodedQuery}`)
+    const result = await fetch(`http://localhost:5000/?query=${encodedQuery}&page=${newPage}`)
     const json = await result.json()
     let augmentedQueryResult = currentResult.concat(json[2])
-    this.setState({ queryResult: augmentedQueryResult})
-    this.setState({ queryResultLength: augmentedQueryResult.length})
+    this.setState({ queryResult: augmentedQueryResult })
+    this.setState({ queryResultLength: augmentedQueryResult.length })
+    // this.setState({ isLoading: false})
   }
 
   updatePalettes = async () => {
@@ -267,12 +260,12 @@ class Tarot extends Component {
       newHexR = ('0' + newHexR)
     }
     let newHexG = Number.parseInt(newColors[id]['green']).toString(16)
-    if (newHexR.length === 1) {
-      newHexR = ('0' + newHexR)
+    if (newHexG.length === 1) {
+      newHexG = ('0' + newHexG)
     }
     let newHexB = Number.parseInt(newColors[id]['blue']).toString(16)
-    if (newHexR.length === 1) {
-      newHexR = ('0' + newHexR)
+    if (newHexB.length === 1) {
+      newHexB = ('0' + newHexB)
     }
     const newHex = newHexR + newHexG + newHexB
     newColors[id]['hex'] = newHex
@@ -297,9 +290,26 @@ class Tarot extends Component {
     const handleTouchStart = this.handleTouchStart
     const handleTouchEnd = this.handleTouchEnd
     const handleTouchMove = this.handleTouchMove
+    const isLoading = this.state.isLoading
+    const noResults = this.state.noResults
 
     return (
       <div className='tarot'>
+      {
+        noResults ? 
+        <div className='no-results'>
+          <p>No results, please try another search</p>
+          <CustomButton onClick={() => this.setState({ noResults: false })}>close</CustomButton>
+        </div> : 
+        null
+      }
+      {
+        isLoading ? 
+        <div className='tarot-spinner'>
+          <Spinner />
+        </div> : 
+        null
+      }
         <div>
           <TopBar
             onChangeQuery={onChangeQuery}
