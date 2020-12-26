@@ -33,6 +33,7 @@ class Tarot extends Component {
       isActive: false,
       menuInitialClass: 'menu-animate-off',
       containerInitialClass: 'container-animate-off',
+      savedPalettesInitialClass: 'saved-palettes-animate-off',
       isDark: true,
       showPalettes: false,
       userMenu: false,
@@ -179,6 +180,7 @@ class Tarot extends Component {
   toggleSavedPalettes = () => {
     const showPalettes = this.state.showPalettes
     this.setState({ showPalettes: !showPalettes })
+    this.setState({ savedPalettesInitialClass: 'saved-palettes-animate-return' })
     if (this.state.userMenu) {
       this.toggleUserMenu()
     }
@@ -241,6 +243,7 @@ class Tarot extends Component {
     const isDark = this.state.isDark
     const DARK_CLASS = 'dark'
     this.setState({ isDark: !isDark })
+    this.toggleMenu()
     if (isDark) {
       document.documentElement.classList.add(DARK_CLASS)
     } else {
@@ -292,6 +295,7 @@ class Tarot extends Component {
     const handleTouchMove = this.handleTouchMove
     const isLoading = this.state.isLoading
     const noResults = this.state.noResults
+    const savedPalettesInitialClass = this.setState.savedPalettesInitialClass
 
     return (
       <div className='tarot'>
@@ -361,8 +365,8 @@ class Tarot extends Component {
         </div>
         <div className={
           showPalettes ?
-            'saved-palettes-animate saved-palettes-container' :
-            'saved-palettes-animate-return saved-palettes-container'}>
+            'saved-palettes-container saved-palettes-animate' :
+            `${savedPalettesInitialClass} saved-palettes-container`}>
           <SavedPalettes
             loadSavedPalette={this.loadSavedPalette}
             toggleMenu={this.toggleMenu}

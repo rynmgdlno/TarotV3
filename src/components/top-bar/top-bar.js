@@ -15,10 +15,16 @@ import './search-bar-animate.css'
 const iconFillStyle = { fill: '#757575' }
 
 const TopBar = ({ onChangeQuery, fetchQuery }) => {
-  const [searchActive, setSearchActive] = useState('')
+  const [searchActive, setSearchActive] = useState('search-bar-animate-reverse')
 
   const toggleSearch = () => {
     searchActive !== 'search-bar-animate' ? setSearchActive('search-bar-animate') : setSearchActive('search-bar-animate-reverse')
+  }
+
+  const onEnter = (e) => {
+    if (e.key === 'Enter') {
+      fetchQuery()
+    }
   }
 
   return (
@@ -31,10 +37,13 @@ const TopBar = ({ onChangeQuery, fetchQuery }) => {
         <Search />
       </CustomButton>
       <SearchBar 
+      className={searchActive}
       placeholder='enter a search term' 
       searchActive={searchActive} 
-      onChange={onChangeQuery}/>
-      <CustomButton onClick={fetchQuery}>Go!</CustomButton>
+      onChange={onChangeQuery}
+      onKeyDown={onEnter}
+      />
+      {/* <CustomButton onClick={fetchQuery}>Go!</CustomButton> */}
     </div>
   )
 }

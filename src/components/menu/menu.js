@@ -26,7 +26,7 @@ const Menu = ({ toggleDark, toggleSavedPalettes, userMenu, toggleUserMenu, curre
         }}><OpenIcon /></CustomButton>
       </div>
       <div className='menu-button'>
-        <CustomButton onClick={togglePalettePopup}><SaveIcon /></CustomButton>
+        <CustomButton disabled={!currentUser} onClick={togglePalettePopup}><SaveIcon /></CustomButton>
       </div>
       <div className='menu-button'>
         <CustomButton onClick={toggleDark}>

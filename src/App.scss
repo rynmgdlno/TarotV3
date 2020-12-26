@@ -25,7 +25,7 @@ body {
 
 html {
 background-color: #FAFAFA;
-  h1, h2, p, span {
+  h1, h2, h3, p, span {
   color: #616161;
 }
   input[type=text] {
@@ -42,11 +42,12 @@ background-color: #FAFAFA;
   .saved-palettes-container {
     background-color: #FAFAFA;
   }
+  --background-color: #FAFAFA;
 }
 
 html.dark {
   background-color: #212121;
-  h1, h2, p, span {
+  h1, h2, h3, p, span, button {
     color: #BDBDBD;
   }
   input[type=text] {
@@ -54,7 +55,7 @@ html.dark {
     border-color: #000000;
   }
     ::placeholder {
-      color: #414141;
+      color: #616161;
     }
     ::-webkit-slider-thumb {
       background-color: #616161;
@@ -62,6 +63,7 @@ html.dark {
     .saved-palettes-container {
       background-color: #212121;
     }
+    --background-color: #212121;
 }
 
 /* * Text Formatting * */
@@ -80,8 +82,10 @@ a {
 }
 
 
-/* * Inputs * */
-
+/* * Inputs / Buttons * */
+button:disabled {
+  opacity: .5;
+}
 
 
 

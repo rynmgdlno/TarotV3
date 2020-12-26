@@ -26,7 +26,7 @@ const FormInput = ({
         placeholder={placeholder}
         value={value}
         {...props}
-        // className={`text-input ${searchActive}`}
+        className={` ${searchActive}`}
         style={error && {border: 'solid 1px red'}}
       />
       { error && <p>{ error }</p>}

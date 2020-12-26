@@ -29,3 +29,7 @@
     right: 100vw;
   }
 }
+
+.saved-palettes-animate-off {
+  opacity: 0;
+}
