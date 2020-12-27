@@ -34,7 +34,7 @@ const Menu = ({ toggleDark, toggleSavedPalettes, userMenu, toggleUserMenu, curre
         </CustomButton>
       </div>
       <div className='menu-button'>
-        <CustomButton><HelpIcon /></CustomButton>
+        <CustomButton disabled='true'><HelpIcon /></CustomButton>
       </div>
       {userMenu &&
         <div className='user-menu'>
