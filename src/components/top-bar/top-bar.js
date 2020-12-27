@@ -37,7 +37,7 @@ const TopBar = ({ onChangeQuery, fetchQuery }) => {
         <Search />
       </CustomButton>
       <SearchBar 
-      className={searchActive}
+      // className={`search-bar`}
       placeholder='enter a search term' 
       searchActive={searchActive} 
       onChange={onChangeQuery}

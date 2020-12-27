@@ -28,7 +28,7 @@ background-color: #FAFAFA;
   h1, h2, h3, p, span {
   color: #616161;
 }
-  input[type=text] {
+  input[type=text], input[type=password] {
     background-color: #FFFFFF;
     border: 1px solid #616161;
     color: #616161;
@@ -50,7 +50,7 @@ html.dark {
   h1, h2, h3, p, span, button {
     color: #BDBDBD;
   }
-  input[type=text] {
+  input[type=text], input[type=password] {
     background-color: #000000;
     border-color: #000000;
   }
@@ -85,6 +85,11 @@ a {
 /* * Inputs / Buttons * */
 button:disabled {
   opacity: .5;
+}
+
+input[type=text], input[type=password] {
+  padding: 3px;
+  border-radius: 5px;
 }
 
 

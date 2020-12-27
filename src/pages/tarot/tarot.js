@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { HamburgerSqueeze } from 'react-animated-burgers'
+// import { HamburgerSqueeze } from 'react-animated-burgers'
+import Hamburger from 'hamburger-react'
 import { auth, firestore, createUserProfileDocument } from '../../firebase/firebase.utils'
 
 import TopBar from '../../components/top-bar/top-bar.js'
@@ -93,35 +94,33 @@ class Tarot extends Component {
     const page = this.state.currentPage
     const queryPages = this.state.queryPages
 
-    // swipe left
-    if (touchStart - touchEnd > 150) {
-      if (this.state.activeQueryResult === 0) {
-        this.setState({ activeQueryResult: queryResultLength - 1 }, () => this.updateActiveColor())
+    if (queryResultLength) {
+      if (touchStart - touchEnd > 150) {
+        if (this.state.activeQueryResult === 0) {
+          this.setState({ activeQueryResult: queryResultLength - 1 }, () => this.updateActiveColor())
+        } else {
+          this.setState({ activeQueryResult: activeQueryResult - 1 }, () => this.updateActiveColor())
+        }
+      }
+
+      if (touchStart - touchEnd < -150) {
+        if (activeQueryResult === queryResultLength - 1) {
+          this.setState({ activeQueryResult: 0 }, () => this.updateActiveColor())
+        } else if (page < queryPages && activeQueryResult === queryResultLength - 10) {
+          this.fetchNewPage()
+          this.setState({ activeQueryResult: activeQueryResult + 1 }, () => this.updateActiveColor())
+        } else {
+          this.setState({ activeQueryResult: activeQueryResult + 1 }, () => this.updateActiveColor())
+        }
+      }
+
+      if (Math.abs(parseInt(touchStart - touchEnd)) > 74) {
+        this.setState({ swipeDelta: true })
       } else {
-        this.setState({ activeQueryResult: activeQueryResult - 1 }, () => this.updateActiveColor())
+        this.setState({ swipeDelta: false })
       }
     }
 
-    // swipe right
-    if (touchStart - touchEnd < -150) {
-      if (activeQueryResult === queryResultLength - 1) {
-        this.setState({ activeQueryResult: 0 }, () => this.updateActiveColor())
-      } else if (page < queryPages && activeQueryResult === queryResultLength - 10) {
-        this.fetchNewPage()
-        this.setState({ activeQueryResult: activeQueryResult + 1 }, () => this.updateActiveColor())
-      } else {
-        this.setState({ activeQueryResult: activeQueryResult + 1 }, () => this.updateActiveColor())
-      }
-    }
-
-    // sets toggle to prevent default onClick if swipe
-
-
-    if (Math.abs(parseInt(touchStart - touchEnd)) > 74) {
-      this.setState({ swipeDelta: true })
-    } else {
-      this.setState({ swipeDelta: false })
-    }
   }
 
   onChangeQuery = (e) => {
@@ -130,7 +129,7 @@ class Tarot extends Component {
   }
 
   fetchQuery = async () => {
-    this.setState({ isLoading: true})
+    this.setState({ isLoading: true })
     const query = this.state.query
     this.setState({ currentPage: 1 })
     const result = await fetch(`http://localhost:5000/?query=${query}&page=1`)
@@ -145,12 +144,11 @@ class Tarot extends Component {
       this.setState({ activeQueryResult: 0 })
       this.setState({ queryResultLength: json[2].length })
       this.setState({ colorEditor: this.state.queryResult[0] })
-      this.setState({ isLoading: false})
+      this.setState({ isLoading: false })
     }
   }
 
   fetchNewPage = async () => {
-    // this.setState({ isLoading: true})
     const newPage = this.state.currentPage + 1
     this.setState({ currentPage: newPage })
     const currentResult = this.state.queryResult
@@ -161,7 +159,6 @@ class Tarot extends Component {
     let augmentedQueryResult = currentResult.concat(json[2])
     this.setState({ queryResult: augmentedQueryResult })
     this.setState({ queryResultLength: augmentedQueryResult.length })
-    // this.setState({ isLoading: false})
   }
 
   updatePalettes = async () => {
@@ -299,35 +296,33 @@ class Tarot extends Component {
 
     return (
       <div className='tarot'>
-      {
-        noResults ? 
-        <div className='no-results'>
-          <p>No results, please try another search</p>
-          <CustomButton onClick={() => this.setState({ noResults: false })}>close</CustomButton>
-        </div> : 
-        null
-      }
-      {
-        isLoading ? 
-        <div className='tarot-spinner'>
-          <Spinner />
-        </div> : 
-        null
-      }
+        {
+          noResults ?
+            <div className='no-results'>
+              <p>No results, please try another search</p>
+              <CustomButton onClick={() => this.setState({ noResults: false })}>close</CustomButton>
+            </div> :
+            null
+        }
+        {
+          isLoading ?
+            <div className='tarot-spinner'>
+              <Spinner />
+            </div> :
+            null
+        }
         <div>
           <TopBar
             onChangeQuery={onChangeQuery}
             fetchQuery={fetchQuery}
           />
-          <HamburgerSqueeze
-            className='hamburger'
-            buttonWidth={30}
-            isActive={this.state.isActive}
-            onClick={() => {
-              this.toggleMenu()
-            }}
-            barColor='#757575'
-          />
+          <div className='hamburger' >
+            <Hamburger
+              color='#757575'
+              toggled={this.state.isActive}
+              toggle={() => {this.setState({ isActive: !this.state.isActive})}}
+            />
+          </div>
         </div>
         <div className='grid-container'>
           <div className={menuAnimate ? 'pane-container container-animate' : `pane-container ${containerAnimateInitial}`}>

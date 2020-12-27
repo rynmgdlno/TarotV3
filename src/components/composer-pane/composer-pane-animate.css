@@ -8,7 +8,7 @@
     height: 92vh;
   }
   to {
-    height: 70vh;
+    height: 76vh;
   }
 }
 
@@ -19,7 +19,7 @@
 
 @keyframes composer-pane-animate-return {
   from {
-    height: 70vh;
+    height: 76vh;
   }
   to {
     height: 92vh;
