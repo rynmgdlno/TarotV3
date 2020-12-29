@@ -28,7 +28,8 @@
     position: absolute;
     top: 1vh;
     right: 0;
-    margin-right: 3vw;
+    // margin-right: 3vw;
+    margin-right: calc(8.5vw - 24px);
     padding: 0;
 }
 

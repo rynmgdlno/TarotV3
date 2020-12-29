@@ -4,6 +4,8 @@ import Splash from './pages/splash/splash.js';
 import Tarot from './pages/tarot/tarot.js';
 import './App.scss';
 
+const vh = window.innerHeight * .01;
+document.documentElement.style.setProperty('--vh', `${vh}px`)
 
 const App = () => {
   return (

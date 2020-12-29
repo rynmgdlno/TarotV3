@@ -5,10 +5,10 @@
 
 @keyframes composer-pane-animate {
   from {
-    height: 92vh;
+    height: calc(var(--vh, 1vh) * 92);
   }
   to {
-    height: 76vh;
+    height: calc(var(--vh, 1vh) * 70);
   }
 }
 
@@ -19,9 +19,9 @@
 
 @keyframes composer-pane-animate-return {
   from {
-    height: 76vh;
+    height: calc(var(--vh, 1vh) * 70);
   }
   to {
-    height: 92vh;
+    height: calc(var(--vh, 1vh) * 92);
   }
 }

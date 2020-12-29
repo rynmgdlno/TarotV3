@@ -15,7 +15,7 @@ import './search-bar-animate.css'
 const iconFillStyle = { fill: '#757575' }
 
 const TopBar = ({ onChangeQuery, fetchQuery }) => {
-  const [searchActive, setSearchActive] = useState('search-bar-animate-reverse')
+  const [searchActive, setSearchActive] = useState('search-bar')
 
   const toggleSearch = () => {
     searchActive !== 'search-bar-animate' ? setSearchActive('search-bar-animate') : setSearchActive('search-bar-animate-reverse')

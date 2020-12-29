@@ -320,7 +320,7 @@ class Tarot extends Component {
             <Hamburger
               color='#757575'
               toggled={this.state.isActive}
-              toggle={() => {this.setState({ isActive: !this.state.isActive})}}
+              toggle={() => {this.toggleMenu()} }
             />
           </div>
         </div>

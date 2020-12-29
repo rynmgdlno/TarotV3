@@ -6,14 +6,16 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100)
+
 }
 
 body {
   max-width: 100%;
-  // overflow-y: hidden;
   overflow-x: hidden;
+  overflow-y: hidden;
   position: relative;
+  // height: 50vh;
   // max-height: 30vh;
 }
 
@@ -28,7 +30,7 @@ background-color: #FAFAFA;
   h1, h2, h3, p, span {
   color: #616161;
 }
-  input[type=text], input[type=password] {
+  input[type=text], input[type=password], input[type=email] {
     background-color: #FFFFFF;
     border: 1px solid #616161;
     color: #616161;
@@ -50,7 +52,7 @@ html.dark {
   h1, h2, h3, p, span, button {
     color: #BDBDBD;
   }
-  input[type=text], input[type=password] {
+  input[type=text], input[type=password], input[type=email] {
     background-color: #000000;
     border-color: #000000;
   }

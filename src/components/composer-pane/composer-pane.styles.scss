@@ -1,6 +1,6 @@
 .composer-pane {
     // border: 1px solid blue;
-    height: 92vh;
+    // height: calc(var(--vh, 1vh) * 92);
 
     .color-comp-container {
         width: 100%;
@@ -11,7 +11,7 @@
 .composer-container {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height: calc(var(--vh, 1vh) * 92);
 }
 
 .composer-fix {
