@@ -24,7 +24,6 @@ const SignUp = ({ toggleSignUp }) => {
       ...userInfo,
       [name]: value
     })
-    console.log(userInfo.email)
   }
 
   const handleSubmit = async (e) => {

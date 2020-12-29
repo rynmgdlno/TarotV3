@@ -28,7 +28,7 @@ const SavedPalettes = ({loadSavedPalette, savedPalettes, currentUser, updatePale
   return (
     <div className='saved-palettes'>
       <div className='section-header'>
-        <h2 className='section-title'>Saved Palettes</h2>
+        <h3 className='section-title'>Saved Palettes</h3>
         <FormInput onChange={searchChange} placeholder='search'/>
       </div>
       {filteredPalettes.map((palette, i) => (

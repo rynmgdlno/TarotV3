@@ -40,22 +40,27 @@ const SavePalettePopup = ({ currentUser, colorEditor, togglePalettePopup }) => {
         !saveSuccess ?
           <div className='save-palette-init'>
             <h3>Save Palette</h3>
-            <span>Palette name:</span>
+            <p>Palette name:</p>
             <div className='palette-form'>
               <FormInput type='text' onChange={namePalette} onKeyPress={handleEnter}></FormInput>
             </div>
             {
-              nameExists ? <p className='name-alert'>name already used</p> : ''
+              nameExists ? <p className='alert'>name already used</p> : ''
             }
-            <CustomButton onClick={togglePalettePopup}>Cancel</CustomButton>
-            <CustomButton
-              type='submit'
-              onClick={savePalette}
-              disabled={
-                !paletteName.length ? true : false
-              }>
-              Save
+            <div className='button-container'>
+              <CustomButton
+                className='custom-button tertiary-button'
+                onClick={togglePalettePopup}>Cancel</CustomButton>
+              <CustomButton
+                className='custom-button tertiary-button'
+                type='submit'
+                onClick={savePalette}
+                disabled={
+                  !paletteName.length ? true : false
+                }>
+                Save
             </CustomButton>
+            </div>
           </div>
           :
           <div className='success-container' onClick={togglePalettePopup}>

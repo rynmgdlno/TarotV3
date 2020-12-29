@@ -6,6 +6,8 @@ import { updateUserName, updateEmail, updatePassword, userReAuth } from '../../f
 import CustomButton from '../custom-button/custom-button'
 import FormInput from '../form-input/form-input';
 
+import './account.styles.scss'
+
 const Account = ({ toggleShowAccount }) => {
 
   const [userInfo, setUserInfo] = useState({
@@ -58,10 +60,10 @@ const Account = ({ toggleShowAccount }) => {
     if (newPassword && confirmNewPassword && newPassword === confirmNewPassword) {
       const curPassSuccess = await userReAuth(currentPassword)
       if (curPassSuccess.code === 'auth/too-many-reuests') {
-        setUserInfo({ passwordError: 'too many attempts'})
+        setUserInfo({ passwordError: 'too many attempts' })
       }
       if (curPassSuccess.code === 'auth/wrong-password') {
-        setUserInfo({ passwordError: 'incorrect password'})
+        setUserInfo({ passwordError: 'incorrect password' })
       }
       await updatePassword(currentPassword, newPassword)
       console.log(curPassSuccess.code)
@@ -73,7 +75,7 @@ const Account = ({ toggleShowAccount }) => {
   return (
     <div className='account-settings'>
       <h3>Account Settings:</h3>
-      <p>Change User Name:</p>
+      <p className='field-label'>Change User Name:</p>
       <FormInput
         name='newDisplayName'
         value={newDisplayName}
@@ -81,7 +83,7 @@ const Account = ({ toggleShowAccount }) => {
         placeholder="new user name"
         onChange={handleChange}
       />
-      <p> Current password required for email/password update:</p>
+      <p className='field-label'>Current password:</p>
       <FormInput
         name='currentPassword'
         value={currentPassword}
@@ -90,8 +92,8 @@ const Account = ({ toggleShowAccount }) => {
         onChange={handleChange}
       />
 
-      <p>{userInfo.passwordError}</p>
-      <p>Change Email:</p>
+      <p className='alert'>{userInfo.passwordError}</p>
+      <p className='field-label'>Change Email:</p>
       <FormInput
         name='newEmail'
         value={newEmail}
@@ -100,9 +102,9 @@ const Account = ({ toggleShowAccount }) => {
         onChange={handleChange}
       />
       {
-        !EmailValidator.validate(newEmail) && newEmail ? <p>enter a valid email</p> : null
+        !EmailValidator.validate(newEmail) && newEmail ? <p className='alert'>enter a valid email</p> : null
       }
-      <p>Change Password:</p>
+      <p className='field-label'>Change Password:</p>
       <FormInput
         name='newPassword'
         value={newPassword}
@@ -118,16 +120,20 @@ const Account = ({ toggleShowAccount }) => {
         onChange={handleChange}
       />
       {
-        newPassword && newPassword.length < 6 ? <p>password must be 6 characters</p> :
-        newPassword !== confirmNewPassword ? <p>passwords must match</p> : null
+        newPassword && newPassword.length < 6 ? <p className='alert'>password must be 6 characters</p> :
+          newPassword !== confirmNewPassword ? <p className='alert'>passwords must match</p> : null
       }
-      <CustomButton type='submit' onClick={handleSubmit} disabled={
-        newDisplayName ? false :
-          !newEmail && !newPassword ? true :
-            EmailValidator.validate(newEmail) && currentPassword ? false :
-              currentPassword && !newEmail && newPassword.length > 5 && confirmNewPassword === newPassword ? false :
-                currentPassword && EmailValidator.validate(newEmail) && newPassword.length > 5 && newPassword === confirmNewPassword ? false : true
-      }>Submit</CustomButton>
+      <CustomButton
+        className=' custom-button tertiary-button'
+        type='submit'
+        onClick={handleSubmit}
+        disabled={
+          newDisplayName ? false :
+            !newEmail && !newPassword ? true :
+              EmailValidator.validate(newEmail) && currentPassword ? false :
+                currentPassword && !newEmail && newPassword.length > 5 && confirmNewPassword === newPassword ? false :
+                  currentPassword && EmailValidator.validate(newEmail) && newPassword.length > 5 && newPassword === confirmNewPassword ? false : true
+        }>Submit</CustomButton>
       {/* <CustomButton onClick={userReAuth}>test</CustomButton> */}
     </div>
   )

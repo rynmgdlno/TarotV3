@@ -31,7 +31,10 @@ const Palette = ({ paletteName, colorInfo, menuToggle, activeMenu, loadSavedPale
         <div className='palette-title'><span className='palette-name'>{paletteName}</span></div>
         <div className='palette-colors-container'>
           {Object.entries(colorInfo).map((color) => (
-            <div onClick={() => menuToggle(paletteName)} key={color[1].id}>
+            <div 
+            className='palette-color'
+            onClick={() => menuToggle(paletteName)} 
+            key={color[1].id}>
               <PaletteColor
                 id={color[1].id}
                 hex={color[1].hex}

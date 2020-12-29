@@ -44,13 +44,13 @@ const UserMenu = ({ signOutSavedPalettes }) => {
               <SignIn toggleSignUp={toggleSignUp} /> :
               <div className='user-button-container'>
                 <h2 className="medFont">{currentUser ? currentUser.displayName : 'error'}</h2>
-                <CustomButton className='splash-button' onClick={() => {
+                <CustomButton className='custom-button secondary-button' onClick={() => {
                   signOutSavedPalettes()
                   auth.signOut()
                   setShowAccount(false)
                 }}>Sign Out</CustomButton>
                 {
-                  isGoogle ? null : <CustomButton className='splash-button' onClick={toggleShowAccount}>Account Settings</CustomButton>
+                  isGoogle ? null : <CustomButton className='custom-button secondary-button' onClick={toggleShowAccount}>Account Settings</CustomButton>
                 }
                 
               </div>

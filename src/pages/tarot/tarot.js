@@ -67,10 +67,23 @@ class Tarot extends Component {
       this.setState({ currentUser: userAuth })
       this.updatePalettes()
     })
+    document.addEventListener("keydown", this.arrowNav, false)
+  }
+
+  arrowNav = (e) => {
+    if (e) {
+      if (e.key === 'ArrowRight' || e.code === 'Space') {
+        this.swipeRight()
+      }
+      if (e.key === 'ArrowLeft') {
+        this.swipeLeft()
+      }
+    }
   }
 
   componentWillUnmount() {
     this.unsubscribeFromAuth();
+    document.removeEventListener("keydown", this.arrowNav, false)
   }
 
   updateActiveColor = () => {
@@ -90,28 +103,14 @@ class Tarot extends Component {
     const touchStart = this.state.touchStart
     const touchEnd = this.state.touchEnd
     const queryResultLength = this.state.queryResultLength
-    const activeQueryResult = this.state.activeQueryResult
-    const page = this.state.currentPage
-    const queryPages = this.state.queryPages
 
     if (queryResultLength) {
       if (touchStart - touchEnd > 150) {
-        if (this.state.activeQueryResult === 0) {
-          this.setState({ activeQueryResult: queryResultLength - 1 }, () => this.updateActiveColor())
-        } else {
-          this.setState({ activeQueryResult: activeQueryResult - 1 }, () => this.updateActiveColor())
-        }
+        this.swipeLeft()
       }
 
       if (touchStart - touchEnd < -150) {
-        if (activeQueryResult === queryResultLength - 1) {
-          this.setState({ activeQueryResult: 0 }, () => this.updateActiveColor())
-        } else if (page < queryPages && activeQueryResult === queryResultLength - 10) {
-          this.fetchNewPage()
-          this.setState({ activeQueryResult: activeQueryResult + 1 }, () => this.updateActiveColor())
-        } else {
-          this.setState({ activeQueryResult: activeQueryResult + 1 }, () => this.updateActiveColor())
-        }
+        this.swipeRight()
       }
 
       if (Math.abs(parseInt(touchStart - touchEnd)) > 74) {
@@ -120,7 +119,35 @@ class Tarot extends Component {
         this.setState({ swipeDelta: false })
       }
     }
+  }
 
+  swipeLeft = () => {
+    const activeQueryResult = this.state.activeQueryResult
+    const queryResultLength = this.state.queryResultLength
+    if (queryResultLength) {
+      if (activeQueryResult === 0) {
+        this.setState({ activeQueryResult: queryResultLength - 1 }, () => this.updateActiveColor())
+      } else {
+        this.setState({ activeQueryResult: activeQueryResult - 1 }, () => this.updateActiveColor())
+      }
+    }
+  }
+
+  swipeRight = () => {
+    const activeQueryResult = this.state.activeQueryResult
+    const queryResultLength = this.state.queryResultLength
+    const page = this.state.currentPage
+    const queryPages = this.state.queryPages
+    if (queryResultLength) {
+      if (activeQueryResult === queryResultLength - 1) {
+        this.setState({ activeQueryResult: 0 }, () => this.updateActiveColor())
+      } else if (page < queryPages && activeQueryResult === queryResultLength - 10) {
+        this.fetchNewPage()
+        this.setState({ activeQueryResult: activeQueryResult + 1 }, () => this.updateActiveColor())
+      } else {
+        this.setState({ activeQueryResult: activeQueryResult + 1 }, () => this.updateActiveColor())
+      }
+    }
   }
 
   onChangeQuery = (e) => {
@@ -295,7 +322,10 @@ class Tarot extends Component {
     const savedPalettesInitialClass = this.setState.savedPalettesInitialClass
 
     return (
-      <div className='tarot'>
+      <div
+        className='tarot'
+        onKeyDown={() => this.arrowNav()}
+      >
         {
           noResults ?
             <div className='no-results'>
@@ -320,7 +350,7 @@ class Tarot extends Component {
             <Hamburger
               color='#757575'
               toggled={this.state.isActive}
-              toggle={() => {this.toggleMenu()} }
+              toggle={() => { this.toggleMenu() }}
             />
           </div>
         </div>

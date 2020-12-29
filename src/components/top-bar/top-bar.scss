@@ -8,7 +8,6 @@
 }
 
 .search-icon {
-    /* margin-left: 3vw; */
     margin-top: .8vh;
 }
 
@@ -16,4 +15,14 @@
     opacity: 0;
     height: 50vh;
     padding: 2em;
+}
+
+@media (orientation: landscape) {
+    .top-bar {
+        height: 20vh;
+    }
+
+    .search-icon {
+        margin-top: calc(10vh - 16px);
+    }
 }

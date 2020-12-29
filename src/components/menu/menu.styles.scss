@@ -5,12 +5,6 @@
     justify-content: flex-start;
 }
 
-.menu-button {
-    margin-top: 1vh;
-    margin-bottom: 1.5vh;
-    // margin-right: 2.3vw;
-}
-
 .user-menu {
     border: none;
     border-radius: .5em;
@@ -26,20 +20,4 @@
 .user-button-container {
     display: flex;
     flex-direction: column;
-}
-
-.splash-button {
-    border: 1px solid #616161;
-    border-radius: .7em;
-    margin-bottom: 1em;
-    padding-left: 1em;
-    padding-right: 1em;
-
-    &:hover {
-        border: 1px solid blue;
-        .p{
-            color: black;
-        }
-        color: black;
-    }
 }

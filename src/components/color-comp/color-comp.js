@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Color from 'color';
 
 import Editor from '../editor/editor'
+import ArrowIcon from '../icons/icon-components/arrow.icon'
 
 import './color-comp.styles.scss'
 import './indicator-animate.css'
@@ -40,11 +41,18 @@ const ColorComp = ({
 
   return (
     <div className='color-comp' style={BGColor}>
+      <div className={
+        id === 0 ? 'arrow-left' : 
+        id === 4 ? 'arrow-right' :
+        'arrow-hidden'
+      }>
+        <ArrowIcon />
+      </div>
       <div
         className='invisible-button'
         onClick={
-          !swipeDelta ? () => 
-          updateActiveColor(id) : null
+          !swipeDelta ? () =>
+            updateActiveColor(id) : null
         }
         onTouchStart={e => handleTouchStart(e)}
         onTouchMove={e => handleTouchMove(e)}
@@ -64,6 +72,7 @@ const ColorComp = ({
             `editor-container editor-animate-return ${visibilityClass}`
       }>
         <Editor id={id} red={red} green={green} blue={blue} sliderChange={sliderChange} updateActiveColor={updateActiveColor} />
+
       </div>
 
     </div>

@@ -1,8 +1,8 @@
 .save-palette-popup {
   position: absolute;
   top: 35vh;
-  right: calc(50vw - 35vw);
-  width: 70vw;
+  right: calc(50vw - 125px);
+  width: 250px;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -13,18 +13,27 @@
   padding: 10px;
 }
 
-.palette-form {
-  width: 80%;
-  margin: 10px;
-}
-
-.name-alert {
-  font-size: 12px;
-  color: red;
-  margin-top: 0;
-}
-
 .success-container {
   width: 100%;
   height: 100%;
+}
+
+.save-palette-init {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  // text-align: left;
+}
+
+.palette-form {
+  width: 100%;
+  margin: 10px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  width: 76%
 }

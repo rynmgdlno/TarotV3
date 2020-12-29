@@ -23,11 +23,14 @@ body {
   box-sizing: border-box;
 }
 
+p {
+  margin: 0;
+}
 /* * Dark / Light Modes * */
 
 html {
 background-color: #FAFAFA;
-  h1, h2, h3, p, span {
+  h1, h2, h3, h4, h5, p, span {
   color: #616161;
 }
   input[type=text], input[type=password], input[type=email] {
@@ -49,7 +52,7 @@ background-color: #FAFAFA;
 
 html.dark {
   background-color: #212121;
-  h1, h2, h3, p, span, button {
+  h1, h2, h3, h4, h5, p, span, button {
     color: #BDBDBD;
   }
   input[type=text], input[type=password], input[type=email] {
@@ -89,7 +92,7 @@ button:disabled {
   opacity: .5;
 }
 
-input[type=text], input[type=password] {
+input[type=text], input[type=password], input[type=email] {
   padding: 3px;
   border-radius: 5px;
 }
