@@ -5,7 +5,9 @@ import * as EmailValidator from 'email-validator'
 
 import { auth, signInWithGoogle } from '../../firebase/firebase.utils'
 
-const SignIn = ({toggleSignUp}) => {
+import './sign-in.styles.scss'
+
+const SignIn = ({ toggleSignUp }) => {
   const [userInfo, setUserInfo] = useState({
     email: '',
     password: ''
@@ -20,7 +22,7 @@ const SignIn = ({toggleSignUp}) => {
 
   const handleSubmit = async e => {
     e.preventDefault()
-    const { email,  password } = userInfo
+    const { email, password } = userInfo
 
     try {
       await auth.signInWithEmailAndPassword(email, password)
@@ -50,16 +52,32 @@ const SignIn = ({toggleSignUp}) => {
         type='password'
         onChange={handleChange}
         required />
-      <CustomButton className='splash-button' onClick={handleSubmit} disabled={
-        userInfo.email && userInfo.password && EmailValidator.validate(userInfo.email) ? false : true
-      }>Sign In</CustomButton>
-      <CustomButton className='splash-button' onClick={signInWithGoogle}>Google Sign In</CustomButton>
-      <CustomButton className='splash-button' onClick={toggleSignUp}>Create New Account</CustomButton>
+      <div className='sign-in-button-container'>
+        <CustomButton
+          className='custom-button secondary-button'
+          onClick={handleSubmit}
+          disabled={
+            userInfo.email && userInfo.password && EmailValidator.validate(userInfo.email) ? false : true
+          }>
+          Sign In
+        </CustomButton>
+        <CustomButton
+          className='custom-button secondary-button google-button'
+          onClick={signInWithGoogle}>
+          Google Sign In
+        </CustomButton>
+        <CustomButton
+          className='custom-button secondary-button'
+          onClick={toggleSignUp}>
+          Create New Account
+        </CustomButton>
+      </div>
+
       {
-        userInfo.email && !EmailValidator.validate(userInfo.email) && <p>invalid email</p>
+        userInfo.email && !EmailValidator.validate(userInfo.email) && <p className='alert'>invalid email</p>
       }
       {
-        userInfo.password && userInfo.password.length < 6 && <p>password must be 6 characters</p>
+        userInfo.password && userInfo.password.length < 6 && <p className='alert'>password must be 6 characters</p>
       }
     </div>
   )

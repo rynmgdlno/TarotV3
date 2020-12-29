@@ -1,0 +1,15 @@
+.account-settings {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.alert {
+  color: red;
+}
+
+.field-label {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  // width: 150px;
+}

@@ -2,3 +2,35 @@ button {
   background-color: rgba(0,0,0,0);
   border: none;
 }
+
+.custom-button {
+  border: 1px solid #616161;
+  border-radius: 5px;
+}
+
+.splash-button {
+  margin-bottom: 1em;
+  padding: 5px;
+  width: 200px;
+}
+
+.secondary-button {
+  margin-top: 1em;
+  padding: 5px;
+}
+
+.tertiary-button {
+  margin-top: 5px;
+  width: auto;
+}
+
+.menu-button {
+    margin-top: 1vh;
+    margin-bottom: 1.5vh;
+}
+
+.google-button {
+  background-color: #4C8BF5;
+  color: white;
+  border: none;
+}
