@@ -6,7 +6,6 @@ const Editor = ({ id, red, green, blue, sliderChange, updateActiveColor }) => {
   return (
   <div className='editor'>
     <div className='editor-pane'>
-      {/* <button className='editorbutton done' onClick={() => {updateActiveColor(id)}}>DONE</button> */}
       <div className='slider'>
         <p className='slider-label'>R:</p>
         <input className='slider-input' colorid={id} type='text' name='red' value={red} onChange={sliderChange}/>

@@ -41,13 +41,6 @@ const ColorComp = ({
 
   return (
     <div className='color-comp' style={BGColor}>
-      <div className={
-        id === 0 ? 'arrow-left' : 
-        id === 4 ? 'arrow-right' :
-        'arrow-hidden'
-      }>
-        <ArrowIcon />
-      </div>
       <div
         className='invisible-button'
         onClick={
@@ -59,13 +52,21 @@ const ColorComp = ({
         onTouchEnd={() => handleTouchEnd()}
       >
         <div className={
+          id === 0 ? 'arrow-left' :
+            id === 4 ? 'arrow-right' :
+              'arrow-hidden'
+        }>
+          <ArrowIcon />
+        </div>
+        <div className={
           !editorHasOpened.includes(id) ? 'indicator-initial editor-indicator-container' :
             activeColor === id ? 'indicator-animate editor-indicator-container' :
               'indicator-animate-return editor-indicator-container'
         }>
           <p className='hex-indicator' style={hexStyle}>#{hex.toUpperCase()}</p>
           <div className='editorIndicator' style={indicatorStyle} />
-        </div></div>
+        </div>
+      </div>
       <div onAnimationEnd={onAnimationEnd} className={
         !editorHasOpened.includes(id) ? 'editor-container-initial' :
           activeColor === id ? 'editor-container editor-animate' :

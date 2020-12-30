@@ -24,15 +24,6 @@
     height: 92%;
 }
 
-.hamburger {
-    position: absolute;
-    top: 1vh;
-    right: 0;
-    // margin-right: 3vw;
-    margin-right: calc(8.5vw - 24px);
-    padding: 0;
-}
-
 .tarot-spinner {
     position: fixed;
     display: flex;
@@ -58,4 +49,23 @@
     right: 10vw;
     background-color: #fafafa;
     border-radius: 5px;
+}
+
+@media (orientation: landscape) {
+    .grid-container {
+        height: 88vh;
+        width: 100vw;
+    }
+    .pane-container {
+        flex-direction: row;
+        width: 100vw;
+    }
+    .menu {
+        position: fixed;
+        left: 94vw;
+        transform: translate3d(6vw, 0, 0);
+    
+        width: 6vw;
+        height: 88%;
+    }
 }

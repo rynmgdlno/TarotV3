@@ -25,3 +25,33 @@
     height: calc(var(--vh, 1vh) * 92);
   }
 }
+
+@media (orientation: landscape) {
+  .composer-pane-animate {
+    animation: composer-pane-animate 70ms ease-out;
+    animation-fill-mode: forwards;
+  }
+  
+  @keyframes composer-pane-animate {
+    from {
+      width: 100%;
+    }
+    to {
+      width: 80%;
+    }
+  }
+  
+  .composer-pane-animate-return {
+    animation: composer-pane-animate-return 70ms ease-out;
+    animation-fill-mode: forwards;
+  }
+  
+  @keyframes composer-pane-animate-return {
+    from {
+      width: 80%;
+    }
+    to {
+      width: 100%;
+    }
+  }
+}

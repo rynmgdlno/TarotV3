@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import CustomButton from '../custom-button/custom-button'
 import Search from '../icons/icon-components/search.icon'
 import SearchBar from '../search-bar/search-bar'
+import Hamburger from 'hamburger-react'
 
 // import generator from '../../generator'
 
@@ -14,7 +15,7 @@ import './search-bar-animate.css'
 
 const iconFillStyle = { fill: '#757575' }
 
-const TopBar = ({ onChangeQuery, fetchQuery }) => {
+const TopBar = ({ onChangeQuery, fetchQuery, toggled, toggle }) => {
   const [searchActive, setSearchActive] = useState('search-bar')
 
   const toggleSearch = () => {
@@ -36,14 +37,21 @@ const TopBar = ({ onChangeQuery, fetchQuery }) => {
       >
         <Search />
       </CustomButton>
-      <SearchBar 
-      // className={`search-bar`}
-      placeholder='enter a search term' 
-      searchActive={searchActive} 
-      onChange={onChangeQuery}
-      onKeyDown={onEnter}
+      <SearchBar
+        // className={`search-bar`}
+        placeholder='enter a search term'
+        searchActive={searchActive}
+        onChange={onChangeQuery}
+        onKeyDown={onEnter}
       />
       {/* <CustomButton onClick={fetchQuery}>Go!</CustomButton> */}
+      <div className='hamburger' >
+        <Hamburger
+          color='#757575'
+          toggled={toggled}
+          toggle={toggle}
+        />
+      </div>
     </div>
   )
 }

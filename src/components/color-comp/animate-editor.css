@@ -31,3 +31,37 @@
   visibility: hidden;
 }
 
+@media (orientation: landscape) {
+  .editor-animate {
+    animation: editor-animate 70ms ease-out;
+    animation-fill-mode: forwards;
+  }
+  
+  @keyframes editor-animate {
+    from {
+      left: -100%;
+    }
+    to {
+      left: 0;
+    }
+  }
+  
+  .editor-animate-return {
+    animation: editor-animate-return 70ms ease-out;
+    animation-fill-mode: forwards;
+  }
+  
+  @keyframes editor-animate-return {
+    0% {
+      left: 0;
+    }
+  
+    100% {
+      left: -100%;
+    }
+  }
+  
+  .animation-end {
+    visibility: hidden;
+  }
+}

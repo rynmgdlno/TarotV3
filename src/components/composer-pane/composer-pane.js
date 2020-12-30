@@ -29,7 +29,7 @@ const ComposerPane = ({data, sliderChange, handleTouchStart, handleTouchMove, ha
   }
 
   return (
-    <div className={isActive ? 'composer-pane-animate' : `${composerInitialClass}`}>
+    <div className={isActive ? 'composer-pane-animate composer-container' : `${composerInitialClass} composer-container`}>
       {data.map((color) => (
         <div key={color.id} className='composer-fix'>
           <div className="color-comp-container">

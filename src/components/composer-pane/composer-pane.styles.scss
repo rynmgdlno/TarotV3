@@ -1,6 +1,6 @@
 .composer-pane {
     // border: 1px solid blue;
-    // height: calc(var(--vh, 1vh) * 92);
+    height: calc(var(--vh, 1vh) * 92);
 
     .color-comp-container {
         width: 100%;
@@ -20,3 +20,29 @@
     // display: flex;
 }
 
+@media (orientation: landscape) {
+    .composer-pane {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        // height: 100%;
+
+        // .color-comp-container {
+        //     height: 100%;
+        // }
+    }
+    .composer-container {
+        width: 100vw;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: flex-end;
+        // height: calc(var(--vh, 1vh) * 88);
+    }
+
+    .composer-fix {
+        width: 20%;
+        height: 100%;
+    }
+}

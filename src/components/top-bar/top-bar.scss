@@ -1,5 +1,5 @@
 .top-bar {
-    flex: 0 1 auto;
+    // flex: 0 1 auto;
     display: flex;
     width: 100vw;
     height: 8vh;
@@ -8,21 +8,37 @@
 }
 
 .search-icon {
-    margin-top: .8vh;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-left: 16px;
+    margin-right: 10px;
 }
 
 .search-bar {
     opacity: 0;
     height: 50vh;
     padding: 2em;
+    margin-top: 5px;
+}
+
+.hamburger {
+    margin-right: calc(8.5vw - 24px);
+    margin-left: auto;
+    // padding: 0;
 }
 
 @media (orientation: landscape) {
     .top-bar {
-        height: 20vh;
+        height: 12vh;
+    }
+
+    .hamburger {
+        margin-right: calc(7vw - 24px);
     }
 
     .search-icon {
-        margin-top: calc(10vh - 16px);
+        margin-left: 40px;
     }
 }

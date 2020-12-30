@@ -343,16 +343,18 @@ class Tarot extends Component {
         }
         <div>
           <TopBar
+            toggled={this.state.isActive}
+            toggle={this.toggleMenu}
             onChangeQuery={onChangeQuery}
             fetchQuery={fetchQuery}
           />
-          <div className='hamburger' >
+          {/* <div className='hamburger' >
             <Hamburger
               color='#757575'
               toggled={this.state.isActive}
-              toggle={() => { this.toggleMenu() }}
+              toggle={this.toggleMenu}
             />
-          </div>
+          </div> */}
         </div>
         <div className='grid-container'>
           <div className={menuAnimate ? 'pane-container container-animate' : `pane-container ${containerAnimateInitial}`}>

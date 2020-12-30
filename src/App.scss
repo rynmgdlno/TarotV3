@@ -10,6 +10,10 @@
 
 }
 
+html {
+  padding: env(safe-area-inset);
+}
+
 body {
   max-width: 100%;
   overflow-x: hidden;
@@ -102,4 +106,9 @@ input[type=text], input[type=password], input[type=email] {
 
 /* * Layout * */
 
-
+@media (orientation: landscape) {
+  body {
+    overflow-y: hidden;
+    overflow-x: hidden;
+  }
+}
