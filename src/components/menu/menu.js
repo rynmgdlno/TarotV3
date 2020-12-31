@@ -2,7 +2,6 @@ import React from 'react'
 
 // import { paletteTest } from '../../firebase/firebase.utils'
 
-import UserMenu from '../user-menu/user-menu'
 import CustomButton from '../custom-button/custom-button'
 import UserIcon from '../icons/icon-components/user.icon'
 import OpenIcon from '../icons/icon-components/open.icon'
@@ -13,7 +12,7 @@ import HelpIcon from '../icons/icon-components/help.icon'
 import './menu.styles.scss'
 import '../icons/icon.styles.scss'
 
-const Menu = ({ toggleDark, toggleSavedPalettes, userMenu, toggleUserMenu, currentUser, togglePalettePopup, signOutSavedPalettes, updatePalettes }) => {
+const Menu = ({ toggleDark, toggleSavedPalettes, toggleUserMenu, currentUser, togglePalettePopup, updatePalettes }) => {
   return (
     <div className='menu-container'>
       <div className='menu-button'>
@@ -36,11 +35,6 @@ const Menu = ({ toggleDark, toggleSavedPalettes, userMenu, toggleUserMenu, curre
       <div className='menu-button'>
         <CustomButton disabled={true}><HelpIcon /></CustomButton>
       </div>
-      {userMenu &&
-        <div className='user-menu'>
-          <UserMenu currentUser={currentUser} signOutSavedPalettes={signOutSavedPalettes}/>
-        </div>
-      }
     </div>
   )
 }

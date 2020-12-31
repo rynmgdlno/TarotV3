@@ -1,4 +1,23 @@
-.user-button-container {
+.user-menu {
+  position: absolute;
+  top: 70px;
+  right: calc(50vw - 33vw);
+  border: none;
+  border-radius: .5em;
+  background-color: var(--background-color);
+  padding: 1em;
+  width: 66vw;
+  height: auto;
+}
+
+.acct-button-container {
   display: flex;
-  justify-content: left;
+  justify-content: space-between;
+}
+
+@media (orientation: landscape) {
+  .user-menu {
+    top: 50px;
+    width: 500px;
+  }
 }

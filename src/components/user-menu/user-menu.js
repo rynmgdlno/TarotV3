@@ -10,7 +10,7 @@ import CustomButton from '../custom-button/custom-button'
 
 import './user-menu.styles.scss'
 
-const UserMenu = ({ signOutSavedPalettes }) => {
+const UserMenu = ({ signOutSavedPalettes, toggleUserMenu }) => {
   const [showAccount, setShowAccount] = useState(false)
   const [signUp, setSignUp] = useState(false)
   const [currentUser, setCurrentUser] = useState(auth.currentUser)
@@ -44,25 +44,27 @@ const UserMenu = ({ signOutSavedPalettes }) => {
             <SignUp toggleSignUp={toggleSignUp} /> :
             !currentUser ?
               <SignIn toggleSignUp={toggleSignUp} /> :
-              <div className='user-button-container'>
+              <div className='user-header'>
                 <h2 className="medFont">{currentUser ? currentUser.displayName : 'error'}</h2>
-                <CustomButton className='custom-button secondary-button' onClick={() => {
-                  signOutSavedPalettes()
-                  auth.signOut()
-                  setShowAccount(false)
-                }}>Sign Out</CustomButton>
-                {
-                  isGoogle ? null : <CustomButton className='custom-button secondary-button' onClick={toggleShowAccount}>Account Settings</CustomButton>
-                }
+                <div className='user-button-container'>
+                  <CustomButton className='custom-button secondary-button' onClick={() => {
+                    signOutSavedPalettes()
+                    auth.signOut()
+                    setShowAccount(false)
+                  }}>Sign Out</CustomButton>
+                  {
+                    isGoogle ? null : <CustomButton className='custom-button secondary-button' onClick={toggleShowAccount}>Account Settings</CustomButton>
+                  }
+                </div>
 
               </div>
         }
       </div>
       {
         showAccount ?
-          <Account toggleShowAccount={toggleShowAccount} /> :
-          <div className='user-btn-contnr'>
-            <CustomButton className='custom-button secondary-button'>Cancel</CustomButton>
+          <Account toggleShowAccount={toggleShowAccount} toggleUserMenu={toggleUserMenu} /> :
+          <div className='account-button-container'>
+            <CustomButton onClick={toggleUserMenu} className='custom-button secondary-button'>Cancel</CustomButton>
           </div>
       }
     </div>

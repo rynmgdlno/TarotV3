@@ -4,6 +4,12 @@
   text-align: left;
 }
 
+.acct-settings-menu {
+  > * {
+    width: 100%;
+  }
+}
+
 .alert {
   color: red;
 }
@@ -14,14 +20,23 @@
   // width: 150px;
 }
 
+.acct-section {
+  > * {
+    margin-bottom: 5px;
+  }
+}
+
 @media (orientation: landscape) {
   .acct-form {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 50% 50%;
   }
 
   .acct {
     display: flex;
     flex-direction: column;
   }
+
+  
 }

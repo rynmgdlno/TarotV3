@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
-// import { HamburgerSqueeze } from 'react-animated-burgers'
-import Hamburger from 'hamburger-react'
 import { auth, firestore, createUserProfileDocument } from '../../firebase/firebase.utils'
 
 import TopBar from '../../components/top-bar/top-bar.js'
 import ComposerPane from '../../components/composer-pane/composer-pane.js'
 import Menu from '../../components/menu/menu.js'
 import SavePalettePopup from '../../components/save-palette-popup/save-palette-popop'
-import SavedPalettes from '../../components/saved-palettes/saved-palettes.js'
+import SavedPalettes from '../../components/saved-palettes/saved-palettes'
+import UserMenu from '../../components/user-menu/user-menu'
 import Spinner from '../../components/spinner/spinner'
 
 import './tarot.scss'
@@ -261,6 +260,7 @@ class Tarot extends Component {
   toggleUserMenu = () => {
     const userMenu = this.state.userMenu
     this.setState({ userMenu: !userMenu })
+    this.toggleMenu()
   }
 
   toggleDark = () => {
@@ -389,6 +389,14 @@ class Tarot extends Component {
               <SavePalettePopup currentUser={currentUser} colorEditor={colorEditor} togglePalettePopup={togglePalettePopup} /> :
               null
           }
+          {userMenu &&
+        <div className='user-menu'>
+          <UserMenu 
+          currentUser={currentUser} 
+          signOutSavedPalettes={this.signOutSavedPalettes} 
+          toggleUserMenu={this.toggleUserMenu}/>
+        </div>
+      }
         </div>
         <div className={
           showPalettes ?
