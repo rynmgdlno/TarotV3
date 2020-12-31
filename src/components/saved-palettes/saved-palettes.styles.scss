@@ -4,6 +4,7 @@
 
 .saved-palettes-container {
   position: fixed;
+  overflow-y: scroll;
   top: 0;
   right: 100vw;
   width: 83vw;
@@ -18,12 +19,17 @@
   width: 95%;
 }
 
-.palettes-window {
+.palette-scroll {
+  position: relative;
   overflow-y: scroll;
+}
+
+.palettes-window {
   display: flex;
-  // flex-direction: row;
+  height: 70vh;
+  overflow-y: scroll;
+  // flex-direction: column;
   flex-wrap: wrap;
-  // border: 1px solid red;
 }
 
 .individual-palette {
@@ -49,6 +55,9 @@
     margin-left: 10px;
   }
 
+  .palettes-window {
+    height: 80vh;
+  }
 
 }
 

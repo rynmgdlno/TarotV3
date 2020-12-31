@@ -5,7 +5,7 @@ import Palette from '../palette/palette'
 import './saved-palettes.styles.scss'
 import FormInput from '../form-input/form-input'
 
-const SavedPalettes = ({loadSavedPalette, savedPalettes, currentUser, updatePalettes, toggleRename, toggleMenu, toggleSavedPalettes}) => {
+const SavedPalettes = ({ loadSavedPalette, savedPalettes, currentUser, updatePalettes, toggleRename, toggleMenu, toggleSavedPalettes }) => {
   const [isActive, setIsActive] = useState(false)
   const [activeMenu, setActiveMenu] = useState('')
   const [search, setSearch] = useState('')
@@ -21,7 +21,7 @@ const SavedPalettes = ({loadSavedPalette, savedPalettes, currentUser, updatePale
     setSearch(query)
     console.log(search)
   }
-  
+
   const filteredPalettes = savedPalettes.filter(palette =>
     palette.name.toLowerCase().includes(search.toLowerCase()))
 
@@ -29,12 +29,12 @@ const SavedPalettes = ({loadSavedPalette, savedPalettes, currentUser, updatePale
     <div className='saved-palettes'>
       <div className='section-header'>
         <h3 className='section-title'>Saved Palettes</h3>
-        <FormInput className='palette-search-bar' onChange={searchChange} placeholder='search'/>
+        <FormInput className='palette-search-bar' onChange={searchChange} placeholder='search' />
       </div>
-        <div className='palettes-window'>
+      <div className='palettes-window'>
         {filteredPalettes.map((palette, i) => (
           <div key={i} className='individual-palette'>
-            <Palette 
+            <Palette
               paletteName={palette.name}
               colorInfo={palette.palette}
               menuToggle={openPaletteMenu}
@@ -49,7 +49,7 @@ const SavedPalettes = ({loadSavedPalette, savedPalettes, currentUser, updatePale
             <hr className='palette-hr'></hr>
           </div>
         ))}
-        </div>
+      </div>
     </div>
   )
 }

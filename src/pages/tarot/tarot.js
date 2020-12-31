@@ -71,7 +71,7 @@ class Tarot extends Component {
 
   arrowNav = (e) => {
     if (e) {
-      if (e.key === 'ArrowRight' || e.code === 'Space') {
+      if (e.key === 'ArrowRight') {
         this.swipeRight()
       }
       if (e.key === 'ArrowLeft') {
