@@ -42,7 +42,7 @@
       left: -100%;
     }
     to {
-      left: 0;
+      left: -10px;
     }
   }
   
@@ -53,7 +53,7 @@
   
   @keyframes editor-animate-return {
     0% {
-      left: 0;
+      left: -10px;
     }
   
     100% {

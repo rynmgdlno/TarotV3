@@ -260,7 +260,9 @@ class Tarot extends Component {
   toggleUserMenu = () => {
     const userMenu = this.state.userMenu
     this.setState({ userMenu: !userMenu })
-    this.toggleMenu()
+    if (!this.state.userMenu) {
+      this.toggleMenu()
+    }
   }
 
   toggleDark = () => {

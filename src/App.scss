@@ -43,15 +43,15 @@ background-color: #FAFAFA;
 }
   input[type=text], input[type=password], input[type=email] {
     background-color: #FFFFFF;
-    border: 1px solid #616161;
+    border: 1px solid;
     color: #616161;
   }
     ::placeholder {
       color: #b0b0b0;
     }
-    ::-webkit-slider-thumb {
-      background-color: #616161;
-    }
+    // ::-webkit-slider-thumb {
+    //   background-color: #616161;
+    // }
   .saved-palettes-container {
     background-color: #FAFAFA;
   }
@@ -65,19 +65,20 @@ html.dark {
   }
   input[type=text], input[type=password], input[type=email] {
     background-color: #000000;
-    border-color: #616161;
+    // border-color: #616161;
   }
     ::placeholder {
       color: #616161;
     }
-    ::-webkit-slider-thumb {
-      background-color: #616161;
-    }
+    // ::-webkit-slider-thumb {
+    //   background-color: #616161;
+    // }
     .saved-palettes-container {
       background-color: #212121;
     }
     --background-color: #212121;
 }
+
 
 /* * Text Formatting * */
 a {
