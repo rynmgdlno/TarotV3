@@ -59,12 +59,12 @@ const UserMenu = ({ signOutSavedPalettes }) => {
         }
       </div>
       {
-        showAccount &&
-        <Account toggleShowAccount={toggleShowAccount} />
+        showAccount ?
+          <Account toggleShowAccount={toggleShowAccount} /> :
+          <div className='user-btn-contnr'>
+            <CustomButton className='custom-button secondary-button'>Cancel</CustomButton>
+          </div>
       }
-      <div className='user-btn-contnr'>
-        <CustomButton className='custom-button secondary-button'>Cancel</CustomButton>
-      </div>
     </div>
   )
 }

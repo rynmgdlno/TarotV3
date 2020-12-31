@@ -15,8 +15,13 @@
 }
 
 @media (orientation: landscape) {
-  .account-settings {
-    flex-direction: row;
+  .acct-form {
+    display: flex;
     flex-wrap: wrap;
+  }
+
+  .acct {
+    display: flex;
+    flex-direction: column;
   }
 }
