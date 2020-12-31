@@ -33,3 +33,41 @@
 .saved-palettes-animate-off {
   opacity: 0;
 }
+
+@media (orientation: landscape) {
+  .saved-palettes-animate {
+    animation: saved-palettes-animate 70ms ease-in;
+    animation-fill-mode: forwards;
+  }
+  
+  @keyframes saved-palettes-animate {
+    from {
+      opacity: 0;
+      right: 100vw;
+    }
+    to {
+      opacity: 1;
+      right: 10vw;
+    }
+  }
+  
+  .saved-palettes-animate-return {
+    animation: saved-palettes-animate-return 70ms ease-in;
+    animation-fill-mode: forwards;
+  }
+  
+  @keyframes saved-palettes-animate-return {
+    from {
+      opacity: 1;
+      right: 10vw;
+    }
+    to {
+      opacity: 0;
+      right: 100vw;
+    }
+  }
+  
+  .saved-palettes-animate-off {
+    opacity: 0;
+  }
+}

@@ -1,24 +1,22 @@
 .palette-container {
-  width: 100%;
+  max-width: 20rem;
+  // border: 1px solid red;
 }
 
 .palette {
   display: flex;
   justify-content: space-between;
-  max-width: 100%;
+  // max-width: 20em;
+  // margin-right: 0;
 }
 
 .palette-title {
   padding: 10px;
   width: 35%;
-  // overflow: hidden;
-
   text-align: left;
 }
 
 .palette-name {
-  // background-color: red;
-  // width: 200vw;
   display: block;
   overflow: hidden;
   white-space: nowrap;
@@ -28,7 +26,8 @@
 .palette-colors-container {
   display: flex;
   justify-content: flex-end;
-  width: 65%;
+  height: 36px;
+  // width: 65%;
   border-radius: 5px;
   overflow: hidden;
 }
@@ -38,7 +37,17 @@
   text-align: right;
 }
 
+.menu-off {
+  display: none;
+}
+
 .palette-button {
-  margin-left: 5vw;
+  // margin-left: 2vw;
   margin-top: .7vh;
+}
+
+@media (orientation: landscape) {
+  .palette {
+    max-width: 300px;
+  }
 }

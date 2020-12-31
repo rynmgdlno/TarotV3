@@ -18,7 +18,7 @@ const FormInput = ({
   
   return (
     <React.Fragment>
-      <label htmlFor={name}>{label}</label>
+      {/* <label htmlFor={name}>{label}</label> */}
       <input
         id={name}
         name={name}
@@ -26,7 +26,8 @@ const FormInput = ({
         placeholder={placeholder}
         value={value}
         {...props}
-        className={` ${searchActive}`}
+        className={`${className} ${searchActive}`}
+        // className={className}
         style={error && {border: 'solid 1px red'}}
       />
       { error && <p>{ error }</p>}

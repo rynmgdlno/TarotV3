@@ -25,7 +25,7 @@ const Palette = ({ paletteName, colorInfo, menuToggle, activeMenu, loadSavedPale
 
   return (
     <div className={
-      activeMenu === paletteName ? 'palette-container-open' : 'palette-container-closed'
+      activeMenu === paletteName ? 'palette-container palette-container-open' : 'palette-container palette-container-closed'
     }>
       <div className='palette'>
         <div className='palette-title'><span className='palette-name'>{paletteName}</span></div>
@@ -47,17 +47,17 @@ const Palette = ({ paletteName, colorInfo, menuToggle, activeMenu, loadSavedPale
         </div>
       </div>
       <div className={
-        activeMenu === paletteName ? 'palette-menu palette-menu-animate' :
-          'palette-menu palette-menu-animate-return'}>
+        activeMenu === paletteName ? 'palette-menu-animate palette-menu' :
+          'palette-menu-animate-return palette-menu menu-off'}>
         <CustomButton
           onClick={() => {
             loadSavedPalette(colorInfo)
           }}
-          className='palette-button'>open</CustomButton>
+          className='palette-button'><span>open</span></CustomButton>
         <CustomButton className='palette-button' onClick={() => {
           toggleRename()
-        }}>rename</CustomButton>
-        <CustomButton className='palette-button' onClick={toggleDelete}>delete</CustomButton>
+        }}><span>rename</span></CustomButton>
+        <CustomButton className='palette-button' onClick={toggleDelete}><span>delete</span></CustomButton>
       </div>
       <div>{
         renamePopup ?

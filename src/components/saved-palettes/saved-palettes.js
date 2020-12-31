@@ -29,25 +29,27 @@ const SavedPalettes = ({loadSavedPalette, savedPalettes, currentUser, updatePale
     <div className='saved-palettes'>
       <div className='section-header'>
         <h3 className='section-title'>Saved Palettes</h3>
-        <FormInput onChange={searchChange} placeholder='search'/>
+        <FormInput className='palette-search-bar' onChange={searchChange} placeholder='search'/>
       </div>
-      {filteredPalettes.map((palette, i) => (
-        <div key={i} className='individual-palette'>
-          <Palette 
-            paletteName={palette.name}
-            colorInfo={palette.palette}
-            menuToggle={openPaletteMenu}
-            activeMenu={activeMenu}
-            loadSavedPalette={loadSavedPalette}
-            currentUser={currentUser}
-            updatePalettes={updatePalettes}
-            toggleRename={toggleRename}
-            toggleMenu={toggleMenu}
-            toggleSavedPalettes={toggleSavedPalettes}
-          />
-          <hr className='palette-hr'></hr>
+        <div className='palettes-window'>
+        {filteredPalettes.map((palette, i) => (
+          <div key={i} className='individual-palette'>
+            <Palette 
+              paletteName={palette.name}
+              colorInfo={palette.palette}
+              menuToggle={openPaletteMenu}
+              activeMenu={activeMenu}
+              loadSavedPalette={loadSavedPalette}
+              currentUser={currentUser}
+              updatePalettes={updatePalettes}
+              toggleRename={toggleRename}
+              toggleMenu={toggleMenu}
+              toggleSavedPalettes={toggleSavedPalettes}
+            />
+            <hr className='palette-hr'></hr>
+          </div>
+        ))}
         </div>
-      ))}
     </div>
   )
 }

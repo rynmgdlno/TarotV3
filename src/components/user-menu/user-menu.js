@@ -8,6 +8,8 @@ import SignUp from '../sign-up/sign-up'
 import Account from '../account/account'
 import CustomButton from '../custom-button/custom-button'
 
+import './user-menu.styles.scss'
+
 const UserMenu = ({ signOutSavedPalettes }) => {
   const [showAccount, setShowAccount] = useState(false)
   const [signUp, setSignUp] = useState(false)
@@ -22,7 +24,7 @@ const UserMenu = ({ signOutSavedPalettes }) => {
     setSignUp(!signUp)
   }
 
-  auth.onAuthStateChanged(function(user) {
+  auth.onAuthStateChanged(function (user) {
     if (user) {
       setCurrentUser(user)
       if (currentUser && currentUser.providerData[0].providerId === 'google.com') {
@@ -52,7 +54,7 @@ const UserMenu = ({ signOutSavedPalettes }) => {
                 {
                   isGoogle ? null : <CustomButton className='custom-button secondary-button' onClick={toggleShowAccount}>Account Settings</CustomButton>
                 }
-                
+
               </div>
         }
       </div>
@@ -60,6 +62,9 @@ const UserMenu = ({ signOutSavedPalettes }) => {
         showAccount &&
         <Account toggleShowAccount={toggleShowAccount} />
       }
+      <div className='user-btn-contnr'>
+        <CustomButton className='custom-button secondary-button'>Cancel</CustomButton>
+      </div>
     </div>
   )
 }

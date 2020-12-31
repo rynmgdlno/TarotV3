@@ -267,7 +267,7 @@ class Tarot extends Component {
     const isDark = this.state.isDark
     const DARK_CLASS = 'dark'
     this.setState({ isDark: !isDark })
-    this.toggleMenu()
+    // this.toggleMenu()
     if (isDark) {
       document.documentElement.classList.add(DARK_CLASS)
     } else {

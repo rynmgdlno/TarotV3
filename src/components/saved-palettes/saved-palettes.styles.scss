@@ -1,15 +1,13 @@
-.saved-palettes {
-  height: 100%;
-  border-top: 1px solid #616161;
-  overflow-y: scroll;
-}
+// .saved-palettes {
+//   height: 100%;
+// }
 
 .saved-palettes-container {
   position: fixed;
-  top: 8vh;
+  top: 0;
   right: 100vw;
   width: 83vw;
-  height: 92vh;
+  height: 100vh;
 }
 
 .section-header {
@@ -19,3 +17,38 @@
 .palette-hr {
   width: 95%;
 }
+
+.palettes-window {
+  overflow-y: scroll;
+  display: flex;
+  // flex-direction: row;
+  flex-wrap: wrap;
+  // border: 1px solid red;
+}
+
+.individual-palette {
+  width: 300px;
+}
+
+
+@media (orientation: landscape) {
+  .saved-palettes-container {
+    top: 0;
+    width: 90vw;
+    padding-left: 2em;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    height: 3em;
+  }
+
+  .palette-search-bar {
+    height: 1.5em;
+    margin-left: 10px;
+  }
+
+
+}
+

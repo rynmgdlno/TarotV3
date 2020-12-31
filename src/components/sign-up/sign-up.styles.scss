@@ -1,0 +1,31 @@
+.sign-up-form-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 5px;
+  > * {
+    width: 100%;
+    margin-top: 5px;
+  }
+}
+
+.sign-up-button-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (orientation: landscape) {
+  .sign-up-form-container {
+    flex-wrap: wrap;
+    margin-top: 5px;
+    :nth-child(odd) {
+      margin-right: 5px;;
+    }
+    :nth-child(even) {
+      margin-left: 5px;;
+    }
+    > * {
+      width: 48%;
+    }
+  }
+}

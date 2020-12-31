@@ -2,3 +2,23 @@
   display: flex;
   flex-direction: column;
 }
+
+.sign-in-email, .sign-in-password {
+  margin-top: 10px;
+  width: 100%;
+}
+
+@media (orientation: landscape) {
+  .sign-in-form-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .sign-in-email {
+    margin-right: 5px;
+  }
+
+  .sign-in-password {
+    margin-left: 5px;
+  }
+}

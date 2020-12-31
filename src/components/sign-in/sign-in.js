@@ -37,21 +37,25 @@ const SignIn = ({ toggleSignUp }) => {
 
   return (
     <div>
-      <p>Sign In</p>
-      <FormInput
-        name='email'
-        value={userInfo.email}
-        placeholder='email'
-        type='email'
-        onChange={handleChange}
-        required />
-      <FormInput
-        name='password'
-        value={userInfo.password}
-        placeholder='password'
-        type='password'
-        onChange={handleChange}
-        required />
+      <p className='sign-in'>Sign In</p>
+      <div className='sign-in-form-container'>
+        <FormInput
+          className='sign-in-email'
+          name='email'
+          value={userInfo.email}
+          placeholder='email'
+          type='email'
+          onChange={handleChange}
+          required />
+        <FormInput
+          className='sign-in-password'
+          name='password'
+          value={userInfo.password}
+          placeholder='password'
+          type='password'
+          onChange={handleChange}
+          required />
+      </div>
       <div className='sign-in-button-container'>
         <CustomButton
           className='custom-button secondary-button'

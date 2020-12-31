@@ -4,10 +4,10 @@
 
 @keyframes palette-container-open {
   from {
-    height: 5vh;
+    height: 32px;
   }
   to {
-    height: 8vh;
+    height: 57px;
   }
 }
 
@@ -17,10 +17,10 @@
 
 @keyframes palette-container-closed {
   from {
-    height: 8vh;
+    height: 57px;
   }
   to {
-    height: 5vh;
+    height: 32px;
   }
 }
 

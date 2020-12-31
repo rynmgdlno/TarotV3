@@ -1,11 +1,15 @@
 button {
   background-color: rgba(0,0,0,0);
   border: none;
+  :hover {
+    cursor: pointer;
+  }
 }
 
 .custom-button {
   border: 1px solid #616161;
   border-radius: 5px;
+  
 }
 
 .splash-button {
