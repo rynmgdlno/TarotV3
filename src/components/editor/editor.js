@@ -1,7 +1,7 @@
 import React from 'react'
 
 import './editor.styles.scss'
-import '@reach/slider/styles.css'
+// import '@reach/slider/styles.css'
 
 const Editor = ({ id, red, green, blue, sliderChange, updateActiveColor }) => {
   return (

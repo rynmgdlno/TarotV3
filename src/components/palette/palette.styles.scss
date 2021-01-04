@@ -1,7 +1,7 @@
-.palette-container {
-  max-width: 20rem;
-  // border: 1px solid red;
-}
+// .palette-container {
+//   // max-width: 20rem;
+//   // border: 1px solid red;
+// }
 
 .palette {
   display: flex;
@@ -27,7 +27,6 @@
   display: flex;
   justify-content: flex-end;
   height: 36px;
-  // width: 65%;
   border-radius: 5px;
   overflow: hidden;
 }
@@ -46,8 +45,8 @@
   margin-top: .7vh;
 }
 
-@media (orientation: landscape) {
-  .palette {
-    max-width: 300px;
+@media screen and (min-width: 768px) {
+  .palette-title {
+    width: 45%;
   }
 }

@@ -28,7 +28,7 @@ const SavedPalettes = ({ loadSavedPalette, savedPalettes, currentUser, updatePal
   return (
     <div className='saved-palettes'>
       <div className='section-header'>
-        <h3 className='section-title'>Saved Palettes</h3>
+        <h3 >Saved Palettes</h3>
         <FormInput className='palette-search-bar' onChange={searchChange} placeholder='search' />
       </div>
       <div className='palettes-window'>

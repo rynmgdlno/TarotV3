@@ -7,6 +7,7 @@
   from {
     bottom: -15.3vh;
   }
+
   to {
     bottom: 0;
   }
@@ -36,32 +37,37 @@
     animation: editor-animate 70ms ease-out;
     animation-fill-mode: forwards;
   }
-  
+
   @keyframes editor-animate {
     from {
       left: -100%;
     }
+
     to {
-      left: -10px;
+      left: -60px;
     }
   }
-  
+
   .editor-animate-return {
     animation: editor-animate-return 70ms ease-out;
     animation-fill-mode: forwards;
   }
-  
+
   @keyframes editor-animate-return {
     0% {
-      left: -10px;
+      left: -60px;
     }
-  
+
     100% {
       left: -100%;
     }
   }
-  
+
   .animation-end {
     visibility: hidden;
+  }
+  
+  @media screen and (max-width: 767.9px) {
+    
   }
 }

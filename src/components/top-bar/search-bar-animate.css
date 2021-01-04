@@ -5,11 +5,11 @@
 @keyframes search-bar-animate {
   from {
     opacity: 0;
-    width: 2vw;
+    width: 5px;
   }
   to {
     opacity: 1;
-    width: 55vw;
+    width: 300px;
   }
 }
 
@@ -20,10 +20,42 @@
 @keyframes search-bar-animate-reverse {
   from {
     opacity: 1;
-    width: 55vw;
+    width: 300px;
   }
   to {
     opacity: 0;
-    width: 2vw;
+    width: 5px;
   }
 }
+
+/* @media screen and (min-width: 768px) {
+  .search-bar-animate {
+    animation: search-bar-animate 70ms ease-in forwards;
+  }
+  
+  @keyframes search-bar-animate {
+    from {
+      opacity: 0;
+      width: 2vw;
+    }
+    to {
+      opacity: 1;
+      width: 30vw;
+    }
+  }
+  
+  .search-bar-animate-reverse {
+    animation: search-bar-animate-reverse 70ms ease-in forwards;
+  }
+  
+  @keyframes search-bar-animate-reverse {
+    from {
+      opacity: 1;
+      width: 30vw;
+    }
+    to {
+      opacity: 0;
+      width: 2vw;
+    }
+  }
+} */

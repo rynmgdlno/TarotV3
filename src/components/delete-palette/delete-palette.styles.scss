@@ -4,11 +4,10 @@
   right: 20vw;
   width: 60vw;
   height: auto;
-
   display: flex;
   flex-direction: column;
-
-  background-color: #FAFAFA;
+  background-color: var(--background-color);
+  border: 1px solid #FAFAFA;
   border-radius: 10px;
   padding: 10px;
   span, input {

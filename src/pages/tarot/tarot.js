@@ -207,6 +207,7 @@ class Tarot extends Component {
     if (this.state.userMenu) {
       this.toggleUserMenu()
     }
+    console.log(this.state.savedPalettesInitialClass)
   }
 
   loadSavedPalette = (palette) => {
@@ -321,7 +322,7 @@ class Tarot extends Component {
     const handleTouchMove = this.handleTouchMove
     const isLoading = this.state.isLoading
     const noResults = this.state.noResults
-    const savedPalettesInitialClass = this.setState.savedPalettesInitialClass
+    const savedPalettesInitialClass = this.state.savedPalettesInitialClass
 
     return (
       <div
@@ -332,7 +333,7 @@ class Tarot extends Component {
           noResults ?
             <div className='no-results'>
               <p>No results, please try another search</p>
-              <CustomButton onClick={() => this.setState({ noResults: false })}>close</CustomButton>
+              <CustomButton className='custom-button tertiary-button' onClick={() => this.setState({ noResults: false })}>close</CustomButton>
             </div> :
             null
         }
@@ -403,7 +404,7 @@ class Tarot extends Component {
         <div className={
           showPalettes ?
             'saved-palettes-container saved-palettes-animate' :
-            `${savedPalettesInitialClass} saved-palettes-container`}>
+            `saved-palettes-container ${savedPalettesInitialClass}`}>
           <SavedPalettes
             loadSavedPalette={this.loadSavedPalette}
             toggleMenu={this.toggleMenu}

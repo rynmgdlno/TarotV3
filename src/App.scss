@@ -105,15 +105,3 @@ input[type=text], input[type=password], input[type=email] {
   padding: 3px;
   border-radius: 5px;
 }
-
-
-
-
-/* * Layout * */
-
-@media (orientation: landscape) {
-  body {
-    overflow-y: hidden;
-    overflow-x: hidden;
-  }
-}

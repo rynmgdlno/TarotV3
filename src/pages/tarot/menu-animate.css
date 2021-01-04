@@ -54,7 +54,7 @@
   }
 }
 
-@media (orientation: landscape) {
+/* @media (orientation: landscape) {
   .menu-animate {
     animation: menu-animate 70ms ease-in;
     animation-fill-mode: forwards;
@@ -105,6 +105,122 @@
   @keyframes container-animate-return {
     from {
       width: 90vw;
+    }
+    to {
+      width: 100vw;
+    }
+  }
+} */
+
+@media screen and (min-width: 768px) {
+  .menu-animate {
+    animation: menu-animate 70ms ease-in;
+    animation-fill-mode: forwards;
+  }
+  
+  @keyframes menu-animate {
+    from {
+      transform: translate3d(6vw, 0, 0);
+    }
+    to {
+      transform: translate3d(0vw, 0, 0);
+    }
+  }
+  
+  .container-animate {
+    animation: container-animate 70ms ease-in;
+    animation-fill-mode: forwards;
+  }
+  
+  @keyframes container-animate {
+    from {
+      width: 100vw;
+    }
+    to {
+      width: 92vw;
+    }
+  }
+  
+  .menu-animate-return {
+    animation: menu-animate-return 70ms ease-in;
+    animation-fill-mode: forwards;
+  }
+  
+  @keyframes menu-animate-return {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(6vw, 0, 0);
+    }
+  }
+  
+  .container-animate-return {
+    animation: container-animate-return 70ms ease-in;
+    animation-fill-mode: forwards;
+  }
+  
+  @keyframes container-animate-return {
+    from {
+      width: 92vw;
+    }
+    to {
+      width: 100vw;
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .menu-animate {
+    animation: menu-animate 70ms ease-in;
+    animation-fill-mode: forwards;
+  }
+  
+  @keyframes menu-animate {
+    from {
+      transform: translate3d(6vw, 0, 0);
+    }
+    to {
+      transform: translate3d(0vw, 0, 0);
+    }
+  }
+  
+  .container-animate {
+    animation: container-animate 70ms ease-in;
+    animation-fill-mode: forwards;
+  }
+  
+  @keyframes container-animate {
+    from {
+      width: 100vw;
+    }
+    to {
+      width: 94vw;
+    }
+  }
+  
+  .menu-animate-return {
+    animation: menu-animate-return 70ms ease-in;
+    animation-fill-mode: forwards;
+  }
+  
+  @keyframes menu-animate-return {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(6vw, 0, 0);
+    }
+  }
+  
+  .container-animate-return {
+    animation: container-animate-return 70ms ease-in;
+    animation-fill-mode: forwards;
+  }
+  
+  @keyframes container-animate-return {
+    from {
+      width: 94vw;
     }
     to {
       width: 100vw;

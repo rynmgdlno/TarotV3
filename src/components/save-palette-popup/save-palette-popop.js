@@ -65,7 +65,7 @@ const SavePalettePopup = ({ currentUser, colorEditor, togglePalettePopup }) => {
           :
           <div className='success-container' onClick={togglePalettePopup}>
             <h3>Success!</h3>
-            <h5>tap/click to close</h5>
+            <p>tap/click to close</p>
           </div>
       }
     </div>

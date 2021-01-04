@@ -7,6 +7,7 @@
   from {
     height: calc(var(--vh, 1vh) * 92);
   }
+
   to {
     height: calc(var(--vh, 1vh) * 70);
   }
@@ -21,8 +22,42 @@
   from {
     height: calc(var(--vh, 1vh) * 70);
   }
+
   to {
     height: calc(var(--vh, 1vh) * 92);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .composer-pane-animate {
+    animation: composer-pane-animate 70ms ease-out;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes composer-pane-animate {
+    from {
+      height: calc(var(--vh, 1vh) * 95);
+    }
+
+    to {
+      height: calc(var(--vh, 1vh) * 78);
+    }
+  }
+
+  .composer-pane-animate-return {
+    animation: composer-pane-animate-return 70ms ease-out;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes composer-pane-animate-return {
+    from {
+      height: calc(var(--vh, 1vh) * 78);
+    }
+
+    to {
+      height: 92vh;
+      height: calc(var(--vh, 1vh) * 95); 
+    }
   }
 }
 
@@ -31,25 +66,27 @@
     animation: composer-pane-animate 70ms ease-out;
     animation-fill-mode: forwards;
   }
-  
+
   @keyframes composer-pane-animate {
     from {
       width: 100%;
     }
+
     to {
-      width: 80%;
+      width: 84%;
     }
   }
-  
+
   .composer-pane-animate-return {
     animation: composer-pane-animate-return 70ms ease-out;
     animation-fill-mode: forwards;
   }
-  
+
   @keyframes composer-pane-animate-return {
     from {
-      width: 80%;
+      width: 84%;
     }
+
     to {
       width: 100%;
     }
