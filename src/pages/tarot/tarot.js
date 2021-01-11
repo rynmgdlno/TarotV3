@@ -124,6 +124,7 @@ class Tarot extends Component {
     const activeQueryResult = this.state.activeQueryResult
     const queryResultLength = this.state.queryResultLength
     if (queryResultLength) {
+      // this.setState({ activeQueryResult: queryResultLength - 1 }, () => this.updateActiveColor())
       if (activeQueryResult === 0) {
         this.setState({ activeQueryResult: queryResultLength - 1 }, () => this.updateActiveColor())
       } else {
@@ -323,6 +324,7 @@ class Tarot extends Component {
     const isLoading = this.state.isLoading
     const noResults = this.state.noResults
     const savedPalettesInitialClass = this.state.savedPalettesInitialClass
+    const queryResultLength = this.state.queryResultLength
 
     return (
       <div
@@ -370,6 +372,9 @@ class Tarot extends Component {
                 handleTouchMove={handleTouchMove}
                 handleTouchEnd={handleTouchEnd}
                 swipeDelta={swipeDelta}
+                swipeLeft={this.swipeLeft}
+                swipeRight={this.swipeRight}
+                queryResultLength={queryResultLength}
               />
             </div>
           </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ArrowIcon = ({ foreColor }) => {
+const ArrowIcon = ({ foreColor, colorInvert }) => {
   return (
     <svg
       width="24"

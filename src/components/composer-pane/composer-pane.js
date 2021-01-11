@@ -6,13 +6,14 @@ import './composer-pane-animate.css'
 
 const newEditorHistoryArray = []
 
-const ComposerPane = ({data, sliderChange, handleTouchStart, handleTouchMove, handleTouchEnd, swipeDelta }) => {
+const ComposerPane = ({data, sliderChange, handleTouchStart, handleTouchMove, handleTouchEnd, swipeDelta, swipeLeft, swipeRight, queryResultLength }) => {
   const [activeColor, setActiveColor] = useState('')
   const [editorHasOpened, setEditorHasOpened] = useState([])
   const [isActive, setIsActive] = useState(false)
   const [composerInitialClass, setComposerInitialClass] = useState('composer-container')
 
-  const updateActiveColor = (id) => {
+  const updateActiveColor = (e, id) => {
+    e.stopPropagation()
     const newActiveEditor = data.find((color) => color.id === id)
     newActiveEditor.id === activeColor ? setActiveColor(null) : setActiveColor(newActiveEditor.id)
     if (!editorHasOpened.includes(id)) {
@@ -49,6 +50,9 @@ const ComposerPane = ({data, sliderChange, handleTouchStart, handleTouchMove, ha
               handleTouchMove={handleTouchMove}
               handleTouchEnd={handleTouchEnd}
               swipeDelta={swipeDelta}
+              swipeLeft={swipeLeft}
+              swipeRight={swipeRight}
+              queryResultLength={queryResultLength}
             />
           </div>
         </div>

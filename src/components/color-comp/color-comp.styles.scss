@@ -43,9 +43,20 @@
 .invisible-button {
   position: relative;
   appearance: none;
+  display: flex;
+  flex-direction: column;
   // border: 1px solid red;
   width: 100%;
   height: 100%;
+  cursor: pointer;
+}
+
+.arrow {
+  display: none;
+}
+
+.arrow:hover {
+  background-color: rgba(255, 255, 255, .7);
 }
 
 .arrow-hidden {
@@ -53,11 +64,20 @@
 }
 
 .arrow-left {
-  display: none;
+  transform: rotate(180deg);
+  margin-left: 20px;
+  &:hover {
+    // transform: rotate(180deg);
+    transform: scale(1.1) rotate(180deg);
+  }
 }
 
 .arrow-right {
-  display: none;
+  margin-right: 20px;
+  margin-left: auto;
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
 @media (orientation: landscape) {
@@ -90,13 +110,17 @@
     margin-bottom: 5vw;
   }
 
-  // .arrow-left {
-  //   transform: rotate(180deg);
-  //   display: block;
-  // }
-  
-  // .arrow-right {
-  //   display: block;
-  // }
-
+  @media screen and (min-width: 768px) {
+    .arrow {
+      margin-top: calc(45vh - 25px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50px;
+      height: 100px;
+      border-radius: 10px;
+      // background-color: rgba(255, 255, 255, .2);
+      transition: all .3s ease-in-out;
+    }
+  }
 }
