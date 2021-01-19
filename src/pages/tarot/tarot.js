@@ -34,7 +34,7 @@ class Tarot extends Component {
       menuInitialClass: 'menu-animate-off',
       containerInitialClass: 'container-animate-off',
       savedPalettesInitialClass: 'saved-palettes-animate-off',
-      isDark: true,
+      isLight: true,
       showPalettes: false,
       userMenu: false,
       savePalettePopup: false,
@@ -265,16 +265,17 @@ class Tarot extends Component {
     }
   }
 
-  toggleDark = () => {
-    const isDark = this.state.isDark
-    const DARK_CLASS = 'dark'
-    this.setState({ isDark: !isDark })
+  toggleLight = () => {
+    const isLight = this.state.isLight
+    const LIGHT_CLASS = 'light'
+    this.setState({ isLight: !isLight })
     // this.toggleMenu()
-    if (isDark) {
-      document.documentElement.classList.add(DARK_CLASS)
+    if (isLight) {
+      document.documentElement.classList.add(LIGHT_CLASS)
     } else {
-      document.documentElement.classList.remove(DARK_CLASS)
+      document.documentElement.classList.remove(LIGHT_CLASS)
     }
+    console.log('light toggle')
   }
 
   sliderChange = (e) => {
@@ -378,7 +379,7 @@ class Tarot extends Component {
           </div>
           <div className={menuAnimate ? 'menu menu-animate' : `menu ${menuAnimateInitial}`}>
             <Menu
-              toggleDark={this.toggleDark}
+              toggleLight={this.toggleLight}
               toggleSavedPalettes={this.toggleSavedPalettes}
               userMenu={userMenu}
               toggleUserMenu={this.toggleUserMenu}

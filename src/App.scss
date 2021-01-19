@@ -36,7 +36,7 @@ p {
 }
 /* * Dark / Light Modes * */
 
-html {
+html.light {
 background-color: #FAFAFA;
   h1, h2, h3, h4, h5, p, span, hr {
   color: #616161;
@@ -58,7 +58,7 @@ background-color: #FAFAFA;
   --background-color: #FAFAFA;
 }
 
-html.dark {
+html {
   background-color: #212121;
   h1, h2, h3, h4, h5, p, span, button, hr {
     color: #BDBDBD;
