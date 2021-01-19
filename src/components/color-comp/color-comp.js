@@ -63,8 +63,9 @@ const ColorComp = ({
         style={arrowBgStyle}
         onClick={(e) => {
           e.stopPropagation()
-          swipeRight()
-        }} className={
+          id === 0 ? swipeLeft() : swipeRight()
+        }}
+        className={
           id === 0 ? 'arrow-left arrow' :
             id === 4 ? 'arrow-right arrow' :
               'arrow-hidden'

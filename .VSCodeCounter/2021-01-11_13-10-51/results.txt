@@ -1,0 +1,200 @@
+Date : 2021-01-11 13:10:51
+Directory : /Volumes/Workspace/Web Dev/Tarot/TarotV3
+Total : 128 files,  34969 codes, 310 comments, 595 blanks, all 35874 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| JSON       |          5 |     30,436 |         10 |          4 |     30,450 |
+| JavaScript |         52 |      2,693 |         78 |        284 |      3,055 |
+| SCSS       |         28 |        836 |         99 |        162 |      1,097 |
+| CSS        |          9 |        527 |         95 |         99 |        721 |
+| XML        |         30 |        367 |          1 |          2 |        370 |
+| HTML       |          1 |         39 |         23 |          8 |         70 |
+| Markdown   |          1 |         37 |          0 |         32 |         69 |
+| YAML       |          2 |         34 |          4 |          4 |         42 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++-----------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                      | files      | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                         |        128 |     34,969 |        310 |        595 |     35,874 |
+| .github                                                                                                   |          2 |         34 |          4 |          4 |         42 |
+| .github/workflows                                                                                         |          2 |         34 |          4 |          4 |         42 |
+| public                                                                                                    |          2 |         64 |         23 |          9 |         96 |
+| src                                                                                                       |        119 |      4,423 |        273 |        547 |      5,243 |
+| src/assets                                                                                                |         12 |        195 |          0 |          0 |        195 |
+| src/assets/icons                                                                                          |         12 |        195 |          0 |          0 |        195 |
+| src/components                                                                                            |         79 |      2,352 |         93 |        366 |      2,811 |
+| src/components/account                                                                                    |          2 |        225 |          2 |         21 |        248 |
+| src/components/account-settings                                                                           |          1 |          0 |          0 |          1 |          1 |
+| src/components/color-comp                                                                                 |          4 |        279 |          7 |         45 |        331 |
+| src/components/color-result                                                                               |          2 |         27 |          3 |         10 |         40 |
+| src/components/composer-pane                                                                              |          3 |        177 |          4 |         32 |        213 |
+| src/components/custom-button                                                                              |          2 |         42 |          0 |         10 |         52 |
+| src/components/delete-palette                                                                             |          2 |         37 |          0 |          8 |         45 |
+| src/components/editor                                                                                     |          2 |        136 |          8 |         23 |        167 |
+| src/components/form-input                                                                                 |          2 |         46 |          4 |          5 |         55 |
+| src/components/helper                                                                                     |          2 |         10 |          0 |          5 |         15 |
+| src/components/icons                                                                                      |         26 |        331 |          3 |         20 |        354 |
+| src/components/icons/icon-components                                                                      |          8 |        160 |          2 |         18 |        180 |
+| src/components/icons/svg                                                                                  |         17 |        165 |          1 |          1 |        167 |
+| src/components/menu                                                                                       |          2 |         55 |          1 |         10 |         66 |
+| src/components/palette                                                                                    |          3 |        162 |          8 |         26 |        196 |
+| src/components/palette-color                                                                              |          2 |         13 |          3 |          3 |         19 |
+| src/components/rename-palette                                                                             |          2 |         44 |          0 |         10 |         54 |
+| src/components/result-pane                                                                                |          2 |         26 |          0 |          7 |         33 |
+| src/components/save-palette-popup                                                                         |          2 |         98 |          2 |         14 |        114 |
+| src/components/saved-palettes                                                                             |          2 |        106 |         26 |         29 |        161 |
+| src/components/search-bar                                                                                 |          2 |          9 |          0 |          6 |         15 |
+| src/components/sign-in                                                                                    |          2 |        101 |          0 |         13 |        114 |
+| src/components/sign-up                                                                                    |          2 |        127 |          0 |         12 |        139 |
+| src/components/spinner                                                                                    |          2 |         32 |          0 |          3 |         35 |
+| src/components/submit                                                                                     |          2 |         18 |          0 |          2 |         20 |
+| src/components/top-bar                                                                                    |          4 |        167 |         21 |         39 |        227 |
+| src/components/user-menu                                                                                  |          2 |         84 |          1 |         12 |         97 |
+| src/firebase                                                                                              |          1 |        125 |          9 |         14 |        148 |
+| src/pages                                                                                                 |          7 |        794 |        120 |        106 |      1,020 |
+| src/pages/splash                                                                                          |          2 |         20 |          0 |          5 |         25 |
+| src/pages/tarot                                                                                           |          5 |        774 |        120 |        101 |        995 |
+| src/redux                                                                                                 |          6 |         32 |          0 |         12 |         44 |
+| src/redux/composer                                                                                        |          4 |          8 |          0 |          4 |         12 |
+| src/styles                                                                                                |          2 |          0 |          0 |          2 |          2 |
++-----------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-----------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                                  | language   | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/.github/workflows/firebase-hosting-merge.yml                     | YAML       |         19 |          2 |          2 |         23 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/.github/workflows/firebase-hosting-pull-request.yml              | YAML       |         15 |          2 |          2 |         19 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/README.md                                                        | Markdown   |         37 |          0 |         32 |         69 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/firebase.json                                                    | JSON       |         11 |         10 |          0 |         21 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/firestore.indexes.json                                           | JSON       |          4 |          0 |          1 |          5 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/package-lock.json                                                | JSON       |     30,346 |          0 |          1 |     30,347 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/package.json                                                     | JSON       |         50 |          0 |          1 |         51 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/public/index.html                                                | HTML       |         39 |         23 |          8 |         70 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/public/manifest.json                                             | JSON       |         25 |          0 |          1 |         26 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/App.js                                                       | JavaScript |         21 |          0 |          5 |         26 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/App.scss                                                     | SCSS       |         80 |         13 |         17 |        110 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/App.test.js                                                  | JavaScript |          8 |          0 |          2 |         10 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/assets/icons/chanel.svg                                      | XML        |         14 |          0 |          0 |         14 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/assets/icons/chevron-double-up-o.svg                         | XML        |         22 |          0 |          0 |         22 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/assets/icons/dark-mode.svg                                   | XML        |         18 |          0 |          0 |         18 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/assets/icons/file-add.svg                                    | XML        |         15 |          0 |          0 |         15 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/assets/icons/folder.svg                                      | XML        |         14 |          0 |          0 |         14 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/assets/icons/menu.svg                                        | XML        |         20 |          0 |          0 |         20 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/assets/icons/options.svg                                     | XML        |         20 |          0 |          0 |         20 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/assets/icons/readme.svg                                      | XML        |         14 |          0 |          0 |         14 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/assets/icons/search.svg                                      | XML        |         14 |          0 |          0 |         14 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/assets/icons/trash-empty.svg                                 | XML        |         14 |          0 |          0 |         14 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/assets/icons/undo.svg                                        | XML        |         12 |          0 |          0 |         12 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/assets/icons/user.svg                                        | XML        |         18 |          0 |          0 |         18 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/account-settings/account-settings.js              | JavaScript |          0 |          0 |          1 |          1 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/account/account.js                                | JavaScript |        192 |          1 |         14 |        207 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/account/account.styles.scss                       | SCSS       |         33 |          1 |          7 |         41 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/color-comp/animate-editor.css                     | CSS        |         58 |          0 |         15 |         73 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/color-comp/color-comp.js                          | JavaScript |         88 |          2 |          8 |         98 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/color-comp/color-comp.styles.scss                 | SCSS       |        106 |          4 |         16 |        126 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/color-comp/indicator-animate.css                  | CSS        |         27 |          1 |          6 |         34 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/color-result/color-result.js                      | JavaScript |         18 |          3 |          8 |         29 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/color-result/color-result.styles.scss             | SCSS       |          9 |          0 |          2 |         11 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/composer-pane/composer-pane-animate.css           | CSS        |         77 |          0 |         17 |         94 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/composer-pane/composer-pane.js                    | JavaScript |         56 |          1 |          7 |         64 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/composer-pane/composer-pane.styles.scss           | SCSS       |         44 |          3 |          8 |         55 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/custom-button/custom-button.js                    | JavaScript |          8 |          0 |          4 |         12 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/custom-button/custom-button.styles.scss           | SCSS       |         34 |          0 |          6 |         40 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/delete-palette/delete-palette.js                  | JavaScript |         21 |          0 |          6 |         27 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/delete-palette/delete-palette.styles.scss         | SCSS       |         16 |          0 |          2 |         18 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/editor/editor.js                                  | JavaScript |         26 |          1 |          4 |         31 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/editor/editor.styles.scss                         | SCSS       |        110 |          7 |         19 |        136 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/form-input/form-input.js                          | JavaScript |         43 |          4 |          5 |         52 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/form-input/form-input.scss                        | SCSS       |          3 |          0 |          0 |          3 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/helper/helper.js                                  | JavaScript |         10 |          0 |          4 |         14 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/helper/helper.styles.scss                         | SCSS       |          0 |          0 |          1 |          1 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/icons/icon-components/arrow.icon.js               | JavaScript |         20 |          0 |          2 |         22 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/icons/icon-components/editor.icon.js              | JavaScript |         22 |          0 |          2 |         24 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/icons/icon-components/help.icon.js                | JavaScript |         17 |          0 |          2 |         19 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/icons/icon-components/open.icon.js                | JavaScript |         18 |          0 |          2 |         20 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/icons/icon-components/save.icon.js                | JavaScript |         18 |          0 |          2 |         20 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/icons/icon-components/search.icon.js              | JavaScript |         23 |          2 |          4 |         29 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/icons/icon-components/them.icon.js                | JavaScript |         24 |          0 |          2 |         26 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/icons/icon-components/user.icon.js                | JavaScript |         18 |          0 |          2 |         20 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/icons/icon.styles.scss                            | SCSS       |          6 |          0 |          1 |          7 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/icons/svg/account_circle-black-48dp.svg           | XML        |          1 |          0 |          0 |          1 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/icons/svg/bookmark-black-48dp.svg                 | XML        |          1 |          0 |          0 |          1 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/icons/svg/dark-mode.svg                           | XML        |         18 |          0 |          0 |         18 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/icons/svg/file-add.svg                            | XML        |         15 |          0 |          0 |         15 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/icons/svg/folder-open-solid.svg                   | XML        |          1 |          0 |          0 |          1 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/icons/svg/folder.svg                              | XML        |         14 |          0 |          0 |         14 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/icons/svg/folder_open-black-48dp.svg              | XML        |          1 |          0 |          0 |          1 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/icons/svg/menu.svg                                | XML        |         20 |          0 |          0 |         20 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/icons/svg/options.svg                             | XML        |         20 |          0 |          0 |         20 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/icons/svg/question-circle-regular.svg             | XML        |          4 |          0 |          0 |          4 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/icons/svg/readme.svg                              | XML        |         14 |          0 |          0 |         14 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/icons/svg/save-regular.svg                        | XML        |          1 |          0 |          0 |          1 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/icons/svg/search.svg                              | XML        |         10 |          1 |          1 |         12 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/icons/svg/trash-empty.svg                         | XML        |         14 |          0 |          0 |         14 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/icons/svg/undo.svg                                | XML        |         12 |          0 |          0 |         12 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/icons/svg/user-solid.svg                          | XML        |          1 |          0 |          0 |          1 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/icons/svg/user.svg                                | XML        |         18 |          0 |          0 |         18 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/menu/menu.js                                      | JavaScript |         36 |          1 |          5 |         42 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/menu/menu.styles.scss                             | SCSS       |         19 |          0 |          5 |         24 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/palette-color/palette-color.js                    | JavaScript |          9 |          3 |          2 |         14 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/palette-color/palette-color.styles.scss           | SCSS       |          4 |          0 |          1 |          5 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/palette/palette-animate.css                       | CSS        |         44 |          0 |          9 |         53 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/palette/palette.js                                | JavaScript |         80 |          1 |          9 |         90 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/palette/palette.styles.scss                       | SCSS       |         38 |          7 |          8 |         53 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/rename-palette/rename-palette.js                  | JavaScript |         28 |          0 |          7 |         35 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/rename-palette/rename-palette.styles.scss         | SCSS       |         16 |          0 |          3 |         19 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/result-pane/result-pane.js                        | JavaScript |         15 |          0 |          4 |         19 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/result-pane/result-pane.styles.scss               | SCSS       |         11 |          0 |          3 |         14 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/save-palette-popup/save-palette-popop.js          | JavaScript |         64 |          1 |         10 |         75 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/save-palette-popup/save-palette-popup.styles.scss | SCSS       |         34 |          1 |          4 |         39 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/saved-palettes/saved-palettes.js                  | JavaScript |         49 |          0 |          8 |         57 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/saved-palettes/saved-palettes.styles.scss         | SCSS       |         57 |         26 |         21 |        104 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/search-bar/search-bar.js                          | JavaScript |          9 |          0 |          5 |         14 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/search-bar/search-bar.styles.scss                 | SCSS       |          0 |          0 |          1 |          1 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/sign-in/sign-in.js                                | JavaScript |         81 |          0 |          9 |         90 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/sign-in/sign-in.styles.scss                       | SCSS       |         20 |          0 |          4 |         24 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/sign-up/sign-up.js                                | JavaScript |         98 |          0 |         10 |        108 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/sign-up/sign-up.styles.scss                       | SCSS       |         29 |          0 |          2 |         31 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/spinner/spinner.js                                | JavaScript |          8 |          0 |          3 |         11 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/spinner/spinner.styles.scss                       | SCSS       |         24 |          0 |          0 |         24 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/submit/submit.css                                 | CSS        |         10 |          0 |          0 |         10 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/submit/submit.js                                  | JavaScript |          8 |          0 |          2 |         10 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/top-bar/search-bar-animate.css                    | CSS        |         54 |          0 |         11 |         65 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/top-bar/top-bar.js                                | JavaScript |         46 |          2 |         13 |         61 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/top-bar/top-bar.scss                              | SCSS       |         48 |         19 |         12 |         79 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/top-bar/top-barBackup.js                          | JavaScript |         19 |          0 |          3 |         22 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/user-menu/user-menu.js                            | JavaScript |         63 |          1 |         10 |         74 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/components/user-menu/user-menu.styles.scss                   | SCSS       |         21 |          0 |          2 |         23 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/data.js                                                      | JavaScript |         38 |          0 |          1 |         39 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/fake-result.js                                               | JavaScript |         38 |          0 |          1 |         39 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/fake-saved-palettes.js                                       | JavaScript |        604 |          0 |          1 |        605 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/firebase/firebase.utils.js                                   | JavaScript |        125 |          9 |         14 |        148 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/generator.js                                                 | JavaScript |          5 |          0 |          0 |          5 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/index.css                                                    | CSS        |         12 |          0 |          2 |         14 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/index.js                                                     | JavaScript |         13 |          3 |          3 |         19 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/logo.svg                                                     | XML        |          7 |          0 |          1 |          8 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/pages/splash/splash.js                                       | JavaScript |         14 |          0 |          4 |         18 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/pages/splash/splash.scss                                     | SCSS       |          6 |          0 |          1 |          7 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/pages/tarot/menu-animate.css                                 | CSS        |        148 |         57 |         24 |        229 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/pages/tarot/saved-palettes-animate.css                       | CSS        |         97 |         37 |         15 |        149 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/pages/tarot/tarot.js                                         | JavaScript |        384 |          7 |         34 |        425 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/pages/tarot/tarot.scss                                       | SCSS       |         68 |         18 |         14 |        100 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/pages/tarot/tarotBackup.js                                   | JavaScript |         77 |          1 |         14 |         92 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/redux/composer/composer.actions.js                           | JavaScript |          5 |          0 |          1 |          6 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/redux/composer/composer.reducer.js                           | JavaScript |          0 |          0 |          1 |          1 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/redux/composer/composer.selectors.js                         | JavaScript |          0 |          0 |          1 |          1 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/redux/composer/composer.types.js                             | JavaScript |          3 |          0 |          1 |          4 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/redux/root-reducer.js                                        | JavaScript |         13 |          0 |          4 |         17 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/redux/store.js                                               | JavaScript |         11 |          0 |          4 |         15 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/serviceWorker.js                                             | JavaScript |         98 |         31 |         13 |        142 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/setupTests.js                                                | JavaScript |          1 |          4 |          1 |          6 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/styles/mixins.scss                                           | SCSS       |          0 |          0 |          1 |          1 |
+| /Volumes/Workspace/Web Dev/Tarot/TarotV3/src/styles/variables.scss                                        | SCSS       |          0 |          0 |          1 |          1 |
+| Total                                                                                                     |            |     34,969 |        310 |        595 |     35,874 |
++-----------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+

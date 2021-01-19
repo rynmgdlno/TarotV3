@@ -49,7 +49,6 @@ class Tarot extends Component {
   unsubscribeFromAuth = null
 
   componentDidMount() {
-
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
@@ -61,7 +60,6 @@ class Tarot extends Component {
             }
           })
         })
-
       }
       this.setState({ currentUser: userAuth })
       this.updatePalettes()

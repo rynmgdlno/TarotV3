@@ -45,6 +45,7 @@ const TopBar = ({ onChangeQuery, fetchQuery, toggled, toggle }) => {
         onKeyDown={onEnter}
       />
       {/* <CustomButton onClick={fetchQuery}>Go!</CustomButton> */}
+      <div className="title"><h1>Tarot</h1></div>
       <div className='hamburger' >
         <Hamburger
           color='#757575'
