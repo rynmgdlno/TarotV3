@@ -31,6 +31,10 @@ body {
   box-sizing: border-box;
 }
 
+*:focus {
+  outline:none;
+}
+
 p {
   margin: 0;
 }
