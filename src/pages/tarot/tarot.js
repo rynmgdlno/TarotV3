@@ -157,7 +157,7 @@ class Tarot extends Component {
     this.setState({ isLoading: true })
     const query = this.state.query
     this.setState({ currentPage: 1 })
-    const result = await fetch(`https://rynmgdlno.pythonanywhere.com/?query=${query}&page=1`)
+    const result = await fetch(`https://rynmgdlno.pythonanywhere.com/?query=${query}&page=1`, { method: 'get', mode: 'cors' })
     const json = await result.json()
     if (!json[2].length) {
       this.setState({ isLoading: false })
@@ -179,7 +179,7 @@ class Tarot extends Component {
     const currentResult = this.state.queryResult
     const query = this.state.query
     const encodedQuery = encodeURIComponent(query).replace(/%20/g, "+")
-    const result = await fetch(`https://rynmgdlno.pythonanywhere.com/?query=${encodedQuery}&page=${newPage}`)
+    const result = await fetch(`https://rynmgdlno.pythonanywhere.com/?query=${encodedQuery}&page=${newPage}`, { method: 'get', mode: 'cors' })
     const json = await result.json()
     let augmentedQueryResult = currentResult.concat(json[2])
     this.setState({ queryResult: augmentedQueryResult })
