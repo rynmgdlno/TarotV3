@@ -40,9 +40,9 @@ const SavePalettePopup = ({ currentUser, colorEditor, togglePalettePopup }) => {
         !saveSuccess ?
           <div className='save-palette-init'>
             <h3>Save Palette</h3>
-            <p>Palette name:</p>
+            {/* <p>Palette name:</p> */}
             <div className='palette-form'>
-              <FormInput type='text' onChange={namePalette} onKeyPress={handleEnter}></FormInput>
+              <FormInput type='text' onChange={namePalette} onKeyPress={handleEnter} placeholder='palette name'></FormInput>
             </div>
             {
               nameExists ? <p className='alert'>name already used</p> : ''
