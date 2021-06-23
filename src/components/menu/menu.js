@@ -12,7 +12,7 @@ import HelpIcon from '../icons/icon-components/help.icon'
 import './menu.styles.scss'
 import '../icons/icon.styles.scss'
 
-const Menu = ({ toggleDark, toggleSavedPalettes, toggleUserMenu, currentUser, togglePalettePopup, updatePalettes }) => {
+const Menu = ({ toggleLight, toggleSavedPalettes, toggleUserMenu, currentUser, togglePalettePopup, updatePalettes }) => {
   return (
     <div className='menu-container'>
       <div className='menu-button'>
@@ -28,7 +28,7 @@ const Menu = ({ toggleDark, toggleSavedPalettes, toggleUserMenu, currentUser, to
         <CustomButton disabled={!currentUser} onClick={togglePalettePopup}><SaveIcon /></CustomButton>
       </div>
       <div className='menu-button'>
-        <CustomButton onClick={toggleDark}>
+        <CustomButton onClick={toggleLight}>
           <ThemeIcon />
         </CustomButton>
       </div>

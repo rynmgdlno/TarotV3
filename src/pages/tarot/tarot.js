@@ -34,7 +34,7 @@ class Tarot extends Component {
       menuInitialClass: 'menu-animate-off',
       containerInitialClass: 'container-animate-off',
       savedPalettesInitialClass: 'saved-palettes-animate-off',
-      isDark: true,
+      isLight: true,
       showPalettes: false,
       userMenu: false,
       savePalettePopup: false,
@@ -157,7 +157,11 @@ class Tarot extends Component {
     this.setState({ isLoading: true })
     const query = this.state.query
     this.setState({ currentPage: 1 })
+<<<<<<< HEAD
     const result = await fetch(`http://api.tarotcolor.com/?query=${query}&page=1`)
+=======
+    const result = await fetch(`https://rynmgdlno.pythonanywhere.com/?query=${query}&page=1`, { method: 'get', mode: 'cors' })
+>>>>>>> 1ad45cabf100d34e8fb55d71565eab228d1ac183
     const json = await result.json()
     if (!json[2].length) {
       this.setState({ isLoading: false })
@@ -179,7 +183,11 @@ class Tarot extends Component {
     const currentResult = this.state.queryResult
     const query = this.state.query
     const encodedQuery = encodeURIComponent(query).replace(/%20/g, "+")
+<<<<<<< HEAD
     const result = await fetch(`http://api.tarotcolor.com/?query=${encodedQuery}&page=${newPage}`)
+=======
+    const result = await fetch(`https://rynmgdlno.pythonanywhere.com/?query=${encodedQuery}&page=${newPage}`, { method: 'get', mode: 'cors' })
+>>>>>>> 1ad45cabf100d34e8fb55d71565eab228d1ac183
     const json = await result.json()
     let augmentedQueryResult = currentResult.concat(json[2])
     this.setState({ queryResult: augmentedQueryResult })
@@ -206,7 +214,6 @@ class Tarot extends Component {
     if (this.state.userMenu) {
       this.toggleUserMenu()
     }
-    console.log(this.state.savedPalettesInitialClass)
   }
 
   loadSavedPalette = (palette) => {
@@ -265,15 +272,15 @@ class Tarot extends Component {
     }
   }
 
-  toggleDark = () => {
-    const isDark = this.state.isDark
-    const DARK_CLASS = 'dark'
-    this.setState({ isDark: !isDark })
+  toggleLight = () => {
+    const isLight = this.state.isLight
+    const LIGHT_CLASS = 'light'
+    this.setState({ isLight: !isLight })
     // this.toggleMenu()
-    if (isDark) {
-      document.documentElement.classList.add(DARK_CLASS)
+    if (isLight) {
+      document.documentElement.classList.add(LIGHT_CLASS)
     } else {
-      document.documentElement.classList.remove(DARK_CLASS)
+      document.documentElement.classList.remove(LIGHT_CLASS)
     }
   }
 
@@ -378,7 +385,7 @@ class Tarot extends Component {
           </div>
           <div className={menuAnimate ? 'menu menu-animate' : `menu ${menuAnimateInitial}`}>
             <Menu
-              toggleDark={this.toggleDark}
+              toggleLight={this.toggleLight}
               toggleSavedPalettes={this.toggleSavedPalettes}
               userMenu={userMenu}
               toggleUserMenu={this.toggleUserMenu}

@@ -19,7 +19,6 @@ const ColorComp = ({
   updateActiveColor,
   editorHasOpened,
   sliderChange,
-  // composerPaneToggle,
   handleTouchEnd,
   handleTouchMove,
   handleTouchStart,
