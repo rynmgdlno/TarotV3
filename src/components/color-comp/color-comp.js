@@ -56,25 +56,26 @@ const ColorComp = ({
         onTouchMove={e => handleTouchMove(e)}
         onTouchEnd={() => handleTouchEnd()}
       >
-      {
-        queryResultLength ? 
-        <div 
-        style={arrowBgStyle}
-        onClick={(e) => {
-          e.stopPropagation()
-          id === 0 ? swipeLeft() : swipeRight()
-        }}
-        className={
-          id === 0 ? 'arrow-left arrow' :
-            id === 4 ? 'arrow-right arrow' :
-              'arrow-hidden'
-        }><ArrowIcon foreColor={foreColor}/>
-        </div> :
-        null
-      }
-        
+        {
+          queryResultLength ?
+            <div
+              style={arrowBgStyle}
+              onClick={(e) => {
+                e.stopPropagation()
+                id === 0 ? swipeLeft() : swipeRight()
+              }}
+              className={
+                id === 0 ? 'arrow-left arrow' :
+                  id === 4 ? 'arrow-right arrow' :
+                    'arrow-hidden'
+              }><ArrowIcon foreColor={foreColor} />
+            </div> :
+            null
+        }
+
         <div className={
-          !editorHasOpened.includes(id) ? 'indicator-initial editor-indicator-container' :
+          !editorHasOpened.includes(id) ?
+            'indicator-initial editor-indicator-container' :
             activeColor === id ? 'indicator-animate editor-indicator-container' :
               'indicator-animate-return editor-indicator-container'
         }>

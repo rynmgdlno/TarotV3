@@ -26,8 +26,6 @@ const Account = ({ toggleShowAccount, toggleUserMenu }) => {
     password: false
   })
 
-  // const [buttonDisabled, setButtonDisabled] = useState(true)
-
   const { newDisplayName, newEmail, currentPassword, newPassword, confirmNewPassword } = userInfo
 
 

@@ -46,6 +46,7 @@ class Tarot extends Component {
     }
   }
 
+
   unsubscribeFromAuth = null
 
   componentDidMount() {
@@ -157,11 +158,7 @@ class Tarot extends Component {
     this.setState({ isLoading: true })
     const query = this.state.query
     this.setState({ currentPage: 1 })
-<<<<<<< HEAD
     const result = await fetch(`http://api.tarotcolor.com/?query=${query}&page=1`)
-=======
-    const result = await fetch(`https://rynmgdlno.pythonanywhere.com/?query=${query}&page=1`, { method: 'get', mode: 'cors' })
->>>>>>> 1ad45cabf100d34e8fb55d71565eab228d1ac183
     const json = await result.json()
     if (!json[2].length) {
       this.setState({ isLoading: false })
@@ -183,11 +180,7 @@ class Tarot extends Component {
     const currentResult = this.state.queryResult
     const query = this.state.query
     const encodedQuery = encodeURIComponent(query).replace(/%20/g, "+")
-<<<<<<< HEAD
     const result = await fetch(`http://api.tarotcolor.com/?query=${encodedQuery}&page=${newPage}`)
-=======
-    const result = await fetch(`https://rynmgdlno.pythonanywhere.com/?query=${encodedQuery}&page=${newPage}`, { method: 'get', mode: 'cors' })
->>>>>>> 1ad45cabf100d34e8fb55d71565eab228d1ac183
     const json = await result.json()
     let augmentedQueryResult = currentResult.concat(json[2])
     this.setState({ queryResult: augmentedQueryResult })
@@ -330,7 +323,7 @@ class Tarot extends Component {
     const noResults = this.state.noResults
     const savedPalettesInitialClass = this.state.savedPalettesInitialClass
     const queryResultLength = this.state.queryResultLength
-
+    
     return (
       <div
         className='tarot'
@@ -358,13 +351,6 @@ class Tarot extends Component {
             onChangeQuery={onChangeQuery}
             fetchQuery={fetchQuery}
           />
-          {/* <div className='hamburger' >
-            <Hamburger
-              color='#757575'
-              toggled={this.state.isActive}
-              toggle={this.toggleMenu}
-            />
-          </div> */}
         </div>
         <div className='grid-container'>
           <div className={menuAnimate ? 'pane-container container-animate' : `pane-container ${containerAnimateInitial}`}>

@@ -24,7 +24,7 @@ const UserMenu = ({ signOutSavedPalettes, toggleUserMenu }) => {
     setSignUp(!signUp)
   }
 
-  auth.onAuthStateChanged(function (user) {
+  auth.onAuthStateChanged(function(user){
     if (user) {
       setCurrentUser(user)
       if (currentUser && currentUser.providerData[0].providerId === 'google.com') {
